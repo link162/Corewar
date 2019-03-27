@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:37:48 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/27 16:33:50 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/27 18:45:18 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,17 @@ void	add_players_without_numbers(t_cor *cor)
 	int		i;
 	int		flag;
 
+	i = 0;
 	tmp = cor->list;
 	while (tmp)
 	{
+		i++;
 		if (tmp->id == 0)
 			find_place_for_hero(cor, tmp->file);
 		tmp = tmp->next;
 	}
+	if (i < 1 || i > MAX_PLAYERS)
+		error_case(USAGE);
 	i = -1;
 	flag = 0;
 	while (++i < MAX_PLAYERS)
@@ -50,6 +54,8 @@ void	add_players_without_numbers(t_cor *cor)
 		if (cor->heroes[i].file && flag)
 			error_case(USAGE);
 	}
+	tmp = cor->list;
+	i = 0;
 }
 
 void	set_players(t_cor *cor)
@@ -57,8 +63,6 @@ void	set_players(t_cor *cor)
 	int		i;
 	t_files	*tmp;
 
-	if (!cor->list)
-		error_case(USAGE);
 	i = MAX_PLAYERS + 1;
 	while (--i > 0)
 	{

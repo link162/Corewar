@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 14:03:09 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/26 14:04:44 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/27 18:47:53 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 void	error_case(char *str)
 {
 	ft_printf("%s\n", str);
+	system("leaks corewar");
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 16:42:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/27 16:40:38 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/27 18:45:59 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	read_flags(t_cor *cor, int argc, char **argv)
 		else if (!is_filename(argv[i]))
 			add_file(cor, &i, argc, argv);
 		else
-			error_case("unclown command");
+			error_case(USAGE);
 	}
 	set_players(cor);
 }

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/27 16:37:50 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/27 21:10:28 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 # include "../libftprintf/libftprintf.h"
 # include "op.h"
 # define USAGE "Usage: ./corewar [-d N] [-v] [-n N] <champion1.cor> <...>"
+# define ERROR_FILE "Error_file"
+
 
 typedef struct		s_hero
 {
 	int				id;
+	int				size;
 	char			*name;
+	char			*comment;
 	char			*file;
+	uint8_t			*code;
 }					t_hero;
 
 typedef struct		s_files
@@ -47,5 +52,6 @@ t_files				*create_list(int i, char *data);
 int					is_filename(char *str);
 void				add_file(t_cor *cor, int *i, int argc, char **argv);
 void				set_players(t_cor *cor);
+void				validate_heroes(t_cor *cor);
 
 #endif
