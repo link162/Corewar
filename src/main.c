@@ -6,22 +6,53 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/26 12:15:33 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/27 16:38:46 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	map_init(t_cor *cor)
+void	heroes_to_null(t_cor *cor)
 {
-	cor->count_herous = 0;
-	cor->visual = 0;
+	int i;
+
+	i = 0;
+	while (i < MAX_PLAYERS)
+	{
+		cor->heroes[i].name = NULL;
+		cor->heroes[i].file = NULL;
+		i++;
+	}
 }
 
-int main(int argc, char **argv)
+void	map_init(t_cor *cor)
+{
+	cor->count_heroes = 0;
+	cor->visual = 0;
+	cor->dump_cycle = -2;
+	cor->list = NULL;
+	heroes_to_null(cor);
+}
+
+void	print_data(t_cor *cor)
+{
+	int i;
+
+	if (cor->visual)
+		ft_printf("Visual\n");
+	if (cor->dump_cycle >= 0)
+		ft_printf("Dump after %i cycles\n", cor->dump_cycle);
+	ft_printf("%i heroes\n", cor->count_heroes);
+	i = -1;
+	while (++i < cor->count_heroes)
+		ft_printf("Hero %i %s\n", i + 1, cor->heroes[i].file);
+}
+
+int		main(int argc, char **argv)
 {
 	t_cor cor;
 
 	map_init(&cor);
 	read_flags(&cor, argc, argv);
+	print_data(&cor);
 }

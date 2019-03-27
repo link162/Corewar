@@ -6,39 +6,72 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 16:42:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/26 12:39:00 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/27 16:40:38 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void    visual_flag(t_cor *cor, int *i)
+void	visual_flag(t_cor *cor, int *i)
 {
-    cor->visual = 1;
-    *i++;
+	cor->visual = 1;
+	(*i)++;
 }
 
 void	dump_flag(t_cor *cor, int *i, int argc, char **argv)
 {
-	if (!cor->dump_number && i + 1 < argc)
+	if (cor->dump_cycle == -2 && *i + 1 < argc)
 	{
-		*i++;
-		
-		cor->dump_cycle = ft_atoi(
+		(*i)++;
+		cor->dump_cycle = mod_atoi(argv[*i]);
+		if (cor->dump_cycle < 0)
+			cor->dump_cycle = -1;
+		(*i)++;
+	}
+	else
+		error_case(USAGE);
 }
 
-void    read_flags(t_cor *cor, int argc, char **argv)
+void	num_flag(t_cor *cor, int *i, int argc, char **argv)
 {
-    int i;
+	int		z;
+	t_files	*list;
 
-    i = 1;
-    while (i < argv)
-    {
-        if (!ft_strcmp(argv[i], "-v"))
-            visual_flag(cor, &i);
-        else if (!ft_strcmp(argv[i], "-dump") || !ft_strcmp(argv[i], "-d"))
-            dump_flag(cor, &i, argc, argv);
-        else if (!ft_strcmp(argv[i], "-show"))
-            show_flag(cor, &i, argc, argv);
-    }
+	if (*i + 2 >= argc)
+		error_case(USAGE);
+	(*i)++;
+	z = mod_atoi(argv[*i]);
+	if (z < 1 || z > MAX_PLAYERS || is_filename(argv[++(*i)]))
+		error_case(USAGE);
+	if (!cor->list)
+		cor->list = create_list(z, argv[*i]);
+	else
+	{
+		list = cor->list;
+		while (list->next)
+			list = list->next;
+		list->next = create_list(z, argv[*i]);
+	}
+	(*i)++;
+}
+
+void	read_flags(t_cor *cor, int argc, char **argv)
+{
+	int i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (!ft_strcmp(argv[i], "-v"))
+			visual_flag(cor, &i);
+		else if (!ft_strcmp(argv[i], "-dump") || !ft_strcmp(argv[i], "-d"))
+			dump_flag(cor, &i, argc, argv);
+		else if (!ft_strcmp(argv[i], "-n"))
+			num_flag(cor, &i, argc, argv);
+		else if (!is_filename(argv[i]))
+			add_file(cor, &i, argc, argv);
+		else
+			error_case("unclown command");
+	}
+	set_players(cor);
 }

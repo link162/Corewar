@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/03/24 18:18:05 by ybuhai           ###   ########.fr        #
+#    Updated: 2019/03/27 15:40:33 by ybuhai           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,10 @@ LIB_N		=	libftprintf.a
 
 SRC_D		=	src/
 SRC			=	$(SRC_D)main.c \
-				$(SRC_D)op.c \
+				$(SRC_D)read_flags.c \
+				$(SRC_D)error_case.c \
+				$(SRC_D)function_for_help.c \
+				$(SRC_D)set_players.c \
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
