@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/03/27 18:28:02 by ybuhai           ###   ########.fr        #
+#    Updated: 2019/03/28 13:29:31 by akorobov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,15 @@ SRC			=	$(SRC_D)main.c \
 				$(SRC_D)function_for_help.c \
 				$(SRC_D)set_players.c \
 				$(SRC_D)validate_heroes.c \
+				$(SRC_D)vs_init.c \
+				$(SRC_D)vs_dinit_win.c \
+				$(SRC_D)vs_control_arena.c \
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
 
 INCLUDE		=	-I includes/
-CFLAGS		=	-g3 -O0
+CFLAGS		=	-g3 -O0 -lncurses
 C			=	gcc
 
 all: $(NAME)

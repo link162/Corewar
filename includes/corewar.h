@@ -6,7 +6,11 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/28 13:53:31 by ybuhai           ###   ########.fr       */
+=======
+/*   Updated: 2019/03/28 13:30:11 by akorobov         ###   ########.fr       */
+>>>>>>> 4ed11fea1df6955c05afc8a1327001d87164fe53
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +48,8 @@ typedef struct		s_cor
 	int				dump_cycle;
 	int				visual;
 }					t_cor;
+
+# include "visual.h"
 
 void				read_flags(t_cor *cor, int argc, char **argv);
 void				error_case(char *str);
