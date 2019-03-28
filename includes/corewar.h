@@ -6,11 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/28 17:39:14 by ybuhai           ###   ########.fr       */
-=======
-/*   Updated: 2019/03/28 15:54:07 by akorobov         ###   ########.fr       */
->>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
+/*   Updated: 2019/03/28 21:01:43 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +17,17 @@
 # define USAGE "Usage: ./corewar [-d N] [-v] [-n N] <champion1.cor> <...>"
 # define ERROR_FILE "Error file"
 
+typedef struct		s_cursor
+{
+	int				id;
+	int				carry;
+	int				last_live;
+	int				pos;
+	int				operation;
+	int				cycle_wait;
+	int				reg[REG_NUMBER];
+	struct s_cursor	*next;
+}					t_cursor;
 
 typedef struct		s_hero
 {
@@ -44,6 +51,8 @@ typedef struct		s_cor
 	uint8_t			stage[MEM_SIZE];
 	t_hero			heroes[MAX_PLAYERS];
 	t_files			*list;
+	t_cursor		*cursor;
+	int				cursors;
 	int				count_heroes;
 	int				dump_cycle;
 	int				visual;

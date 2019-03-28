@@ -6,11 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/28 17:39:03 by ybuhai           ###   ########.fr       */
-=======
-/*   Updated: 2019/03/28 15:27:41 by akorobov         ###   ########.fr       */
->>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
+/*   Updated: 2019/03/28 21:16:48 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +27,14 @@ void	heroes_to_null(t_cor *cor)
 
 void	map_init(t_cor *cor)
 {
+	ft_memset(cor->stage, 0, MEM_SIZE);
+	heroes_to_null(cor);
 	cor->count_heroes = 0;
 	cor->visual = 0;
 	cor->dump_cycle = -2;
 	cor->list = NULL;
-	heroes_to_null(cor);
+	cor->cursor = NULL;
+	cor->cursors = 0;
 }
 
 void		print_arena(uint8_t *arena, int print_mode)
@@ -61,6 +60,7 @@ void		print_arena(uint8_t *arena, int print_mode)
 void	print_data(t_cor *cor)
 {
 	int i;
+	t_cursor *cursor;
 
 	if (cor->visual)
 		ft_printf("Visual\n");
@@ -70,12 +70,13 @@ void	print_data(t_cor *cor)
 	i = -1;
 	while (++i < cor->count_heroes)
 		ft_printf("Hero %i file %s\nname \"%s\"\ncomment (\"%s\")\nsize %i\n\n\n\n", i + 1, cor->heroes[i].file, cor->heroes[i].name, cor->heroes[i].comment, cor->heroes[i].size);
-<<<<<<< HEAD
+	cursor = cor->cursor;
+	while (cursor)
+	{
+		ft_printf("cursor hero %i\ncarry %i\nlast_live %i\nposition %i\noperation %i\ncycle to work %i\nreg 1 %i\n\n\n", cursor->id + 1, cursor->carry, cursor->last_live, cursor->pos, cursor->operation, cursor->cycle_wait, cursor->reg[0]);
+		cursor = cursor->next;
+	}
 	print_arena(cor->stage, 32);
-=======
-	ft_memset(cor->stage, 0, MEM_SIZE);
-//	print_arena(cor->stage, 32);
->>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
 }
 
 int		main(int argc, char **argv)
@@ -85,16 +86,10 @@ int		main(int argc, char **argv)
 	map_init(&cor);
 	read_flags(&cor, argc, argv);
 	validate_heroes(&cor);
-<<<<<<< HEAD
 	init_game(&cor);
+	print_data(&cor);
 //	init_win(&cor);
+//	update_arena(&cor);
 //	dinit_win();
-	print_data(&cor);
-=======
-	print_data(&cor);
-	init_win(&cor);
-	update_arena(&cor);
-	dinit_win();
->>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
 	system("leaks corewar");
 }
