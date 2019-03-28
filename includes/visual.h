@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef VIUSAL_H
+# define VIUSAL_H
+
 # include "corewar.h"
 # include <ncurses.h>
 
@@ -21,3 +24,5 @@ void	init_win(t_cor *cor);
 void	dinit_win();
 void	init_status_bar();
 void	update_arena(t_cor *cor);
+
+#endif
