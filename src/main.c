@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/28 13:16:32 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/28 13:53:28 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	print_data(t_cor *cor)
 	i = -1;
 	while (++i < cor->count_heroes)
 		ft_printf("Hero %i file %s\nname \"%s\"\ncomment (\"%s\")\nsize %i\n\n\n\n", i + 1, cor->heroes[i].file, cor->heroes[i].name, cor->heroes[i].comment, cor->heroes[i].size);
+	ft_memset(cor->stage, 0, MEM_SIZE);
 	print_arena(cor->stage, 32);
 }
 
