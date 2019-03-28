@@ -30,14 +30,15 @@ OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
 
 INCLUDE		=	-I includes/
-CFLAGS		=	-g3 -O0 -lncurses
+CFLAGS		=	-g3 -O0
+LIBNC		= -lncurses
 C			=	gcc
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIB)
-	@$(C) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)$(LIB_N) $(INCLUDE)
+	@$(C) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)$(LIB_N) $(INCLUDE) $(LIBNC)
 
 $(OBJ): $(OBJ_D)
 
