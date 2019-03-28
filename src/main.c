@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/27 21:12:35 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/28 12:54:32 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_data(t_cor *cor)
 	ft_printf("%i heroes\n", cor->count_heroes);
 	i = -1;
 	while (++i < cor->count_heroes)
-		ft_printf("Hero %i file %s\nname \"%s\"\ncomment (\"%s\")\nsize %i\n\n\n", i + 1, cor->heroes[i].file, cor->heroes[i].name, cor->heroes[i].comment, cor->heroes[i].size);
+		ft_printf("Hero %i file %s\nname \"%s\"\ncomment (\"%s\")\nsize %i\n\n\n\n", i + 1, cor->heroes[i].file, cor->heroes[i].name, cor->heroes[i].comment, cor->heroes[i].size);
 }
 
 int		main(int argc, char **argv)

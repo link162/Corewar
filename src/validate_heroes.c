@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:29:06 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/27 21:11:18 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/28 12:38:36 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,33 +58,45 @@ char	*check_name(int fd, int len)
 	return (buffer);
 }
 
-void	read_hero(t_cor *cor, int i)
+uint8_t	*check_code(int fd, int len)
 {
-	int fd;
+	ssize_t	size;
+	uint8_t	*buffer;
+	uint8_t	byte;
 
-	fd = open(cor->heroes[i].file, O_RDONLY);
-	if (fd < 0)
+	if (!(buffer = malloc(len)))
+		error_case("Memory error");
+	size = read(fd, buffer, len);
+	if (size == -1)
 		error_case(ERROR_FILE);
-	if (check_int(fd) != COREWAR_EXEC_MAGIC)
-		error_case("Error magic header");
-	cor->heroes[i].name = check_name(fd, PROG_NAME_LENGTH);
-	if (check_int(fd) != 0)
+	if (size < (ssize_t)len || read(fd, &byte, 1) != 0)
 		error_case(ERROR_FILE);
-	if ((cor->heroes[i].size = check_int(fd)) < 0 ||
-			cor->heroes[i].size > CHAMP_MAX_SIZE)
-		error_case("Error champion size");
-	cor->heroes[i].comment = check_name(fd, COMMENT_LENGTH);
-	if (check_int(fd) != 0)
-		error_case(ERROR_FILE);
-//	cor->heroes[i] = check_code(fd, cor->heroes[i].size);
-	close(fd);
+	return (buffer);
 }
 
-void    validate_heroes(t_cor *cor)
+void	validate_heroes(t_cor *cor)
 {
-    int i;
+	int fd;
+	int	i;
 
-    i = 0;
-    while (i < cor->count_heroes)
-        read_hero(cor, i++);
+	i = -1;
+	while (++i < cor->count_heroes)
+	{
+		fd = open(cor->heroes[i].file, O_RDONLY);
+		if (fd < 0)
+			error_case(ERROR_FILE);
+		if (check_int(fd) != COREWAR_EXEC_MAGIC)
+			error_case("Error magic header");
+		cor->heroes[i].name = check_name(fd, PROG_NAME_LENGTH);
+		if (check_int(fd) != 0)
+			error_case(ERROR_FILE);
+		if ((cor->heroes[i].size = check_int(fd)) < 0 ||
+				cor->heroes[i].size > CHAMP_MAX_SIZE)
+			error_case("Error champion size");
+		cor->heroes[i].comment = check_name(fd, COMMENT_LENGTH);
+		if (check_int(fd) != 0)
+			error_case(ERROR_FILE);
+		cor->heroes[i].code = check_code(fd, cor->heroes[i].size);
+		close(fd);
+	}
 }

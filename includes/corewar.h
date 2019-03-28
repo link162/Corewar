@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/27 21:10:28 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/28 12:41:51 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "../libftprintf/libftprintf.h"
 # include "op.h"
 # define USAGE "Usage: ./corewar [-d N] [-v] [-n N] <champion1.cor> <...>"
-# define ERROR_FILE "Error_file"
+# define ERROR_FILE "Error file"
 
 
 typedef struct		s_hero
