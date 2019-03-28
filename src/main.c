@@ -3,98 +3,88 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ystasiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/28 17:39:03 by ybuhai           ###   ########.fr       */
-=======
-/*   Updated: 2019/03/28 15:27:41 by akorobov         ###   ########.fr       */
->>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
+/*   Created: 2019/03/02 13:18:03 by ystasiv           #+#    #+#             */
+/*   Updated: 2019/03/28 18:11:04 by ystasiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "asm.h"
 
-void	heroes_to_null(t_cor *cor)
+void	ft_error(char *s, int i)
 {
-	int i;
+	if (i == 0)
+		ft_printf("Error. %s\n", s);
+	else
+		ft_printf("Error. Line %d: %s\n", i, s);
+	exit(1);
+}
 
+void	init(t_asm *s)
+{
+	ft_bzero(s->name, PROG_NAME_LENGTH + 1);
+	ft_bzero(s->comment, COMMENT_LENGTH + 1);
+	s->filename = NULL;
+	s->magic = COREWAR_EXEC_MAGIC;
+	s->fd = 0;
+	s->new_fd = 0;
+	g_size = 0;
+	g_line = 0;
+}
+
+void	check_av(char **av, t_asm *s)
+{
+	char	*str;
+	int		i;
+
+	str = NULL;
 	i = 0;
-	while (i < MAX_PLAYERS)
+	str = ft_strrchr(av[1], '.');
+	if (!str || !ft_strequ(str, ".s"))
+		ft_error("The file isn't .s extantion!", 0);
+	while (av[1][i])
 	{
-		cor->heroes[i].name = NULL;
-		cor->heroes[i].file = NULL;
+		if (av[1][i] == '.' && av[1][i + 1] == 's')
+			break ;
 		i++;
 	}
+	s->filename = ft_strnew(i + 4);
+	s->filename = ft_strncpy(s->filename, av[1], i);
+	s->filename = ft_strcat(s->filename, ".cor");
 }
 
-void	map_init(t_cor *cor)
+void	ft_usage(void)
 {
-	cor->count_heroes = 0;
-	cor->visual = 0;
-	cor->dump_cycle = -2;
-	cor->list = NULL;
-	heroes_to_null(cor);
+	ft_printf("Usage: ./asm [-b] <file>\n");
+	ft_printf("   -b <file.cor>  : Disassembler for .cor file.\n");
 }
 
-void		print_arena(uint8_t *arena, int print_mode)
+int		main(int ac, char **av)
 {
-	int	i;
-	int	j;
+	t_asm	s;
+	char	*file;
+	t_label	*labels;
 
-	i = 0;
-	while (i < MEM_SIZE)
+	file = NULL;
+	labels = NULL;
+	if (ac == 2)
 	{
-		ft_printf("%.4p : ", i);
-		j = 0;
-		while (j < print_mode)
-		{
-			ft_printf("%.2x ", arena[i + j]);
-			j++;
-		}
-		ft_printf("\n");
-		i += print_mode;
+		init(&s);
+		check_av(av, &s);
+		if ((s.fd = open(av[1], O_RDONLY)) < 0 || read(s.fd, 0, 0) == -1)
+			ft_error("Can't read the source file!", 0);
+		file = start_parsing(&s, &labels);
+		close(s.fd);
+		write_file(&s, file, labels);
+		close(s.new_fd);
 	}
-}
-
-void	print_data(t_cor *cor)
-{
-	int i;
-
-	if (cor->visual)
-		ft_printf("Visual\n");
-	if (cor->dump_cycle >= 0)
-		ft_printf("Dump after %i cycles\n", cor->dump_cycle);
-	ft_printf("%i heroes\n", cor->count_heroes);
-	i = -1;
-	while (++i < cor->count_heroes)
-		ft_printf("Hero %i file %s\nname \"%s\"\ncomment (\"%s\")\nsize %i\n\n\n\n", i + 1, cor->heroes[i].file, cor->heroes[i].name, cor->heroes[i].comment, cor->heroes[i].size);
-<<<<<<< HEAD
-	print_arena(cor->stage, 32);
-=======
-	ft_memset(cor->stage, 0, MEM_SIZE);
-//	print_arena(cor->stage, 32);
->>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
-}
-
-int		main(int argc, char **argv)
-{
-	t_cor cor;
-
-	map_init(&cor);
-	read_flags(&cor, argc, argv);
-	validate_heroes(&cor);
-<<<<<<< HEAD
-	init_game(&cor);
-//	init_win(&cor);
-//	dinit_win();
-	print_data(&cor);
-=======
-	print_data(&cor);
-	init_win(&cor);
-	update_arena(&cor);
-	dinit_win();
->>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
-	system("leaks corewar");
+	else	if (ac == 3 && ft_strequ(av[1], "-b"))
+	{
+		init(&s);
+		start_disasm(&s, av[2]);
+	}
+	else
+		ft_usage();
+	return (0);
 }

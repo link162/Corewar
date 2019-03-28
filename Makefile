@@ -1,63 +1,46 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/03/28 15:14:30 by ybuhai           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+C = clang
+NAME = asm
+FLAGS = -Wall -Werror -Wextra
+DIR_S = src
+HEADER = include
+DIR_O = obj
+LIBFT = libft
+SOURCE = main.c \
+	asm_parser.c \
+	asm_header_handler.c \
+	check_line.c \
+	check_arguments.c \
+	write.c \
+	write_args.c \
+	write_opcode.c \
+	join_line.c \
+	disasm.c \
+	disasm_args.c \
+	disasm_arg_handler.c \
+	make_name_com.c 
 
-NAME		=	corewar
-
-LIB			=	libftprintf/
-LIB_N		=	libftprintf.a
-
-SRC_D		=	src/
-SRC			=	$(SRC_D)main.c \
-				$(SRC_D)read_flags.c \
-				$(SRC_D)error_case.c \
-				$(SRC_D)function_for_help.c \
-				$(SRC_D)set_players.c \
-				$(SRC_D)init_game.c \
-				$(SRC_D)validate_heroes.c \
-				$(SRC_D)vs_init.c \
-				$(SRC_D)vs_dinit_win.c \
-				$(SRC_D)vs_control_arena.c \
-
-OBJ_D		=	obj/
-OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
-
-INCLUDE		=	-I includes/
-CFLAGS		=	-g3 -O0
-LIBNC		= -lncurses
-C			=	gcc
+SRCS = $(addprefix $(DIR_S)/,$(SOURCE))
+OBJS = $(addprefix $(DIR_O)/,$(SOURCE:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@make -C $(LIB)
-	@$(C) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)$(LIB_N) $(INCLUDE) $(LIBNC)
+$(NAME): $(OBJS)
+	make -C $(LIBFT)
+	cp $(LIBFT)/libftprintf.a .
+	gcc $(FLAGS) $(OBJS) libftprintf.a -o $(NAME)
 
-$(OBJ): $(OBJ_D)
-
-$(OBJ_D):
-	@mkdir -p $(OBJ_D)$(SRC_D)
-
-$(OBJ_D)%.o: %.c
-	@$(C) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+$(DIR_O)/%.o: $(DIR_S)/%.c
+	@mkdir -p $(DIR_O)
+	gcc $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
-	@make clean -C $(LIB)
-	@rm -f $(OBJ)
+	rm -f $(OBJS)
+	rm -rf $(DIR_O)
+	make clean -C $(LIBFT)
 
 fclean: clean
-	@make fclean -C $(LIB)
-	@rm -f $(NAME)
-	@rm -rf $(OBJ_D)
+	rm -f $(NAME)
+	rm -f libftprintf.a
+	make fclean -C $(LIBFT)
 
 re: fclean all
-
-.PHONY: all clean fclean re
