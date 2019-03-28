@@ -6,7 +6,11 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/28 17:39:03 by ybuhai           ###   ########.fr       */
+=======
+/*   Updated: 2019/03/28 15:27:41 by akorobov         ###   ########.fr       */
+>>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +70,12 @@ void	print_data(t_cor *cor)
 	i = -1;
 	while (++i < cor->count_heroes)
 		ft_printf("Hero %i file %s\nname \"%s\"\ncomment (\"%s\")\nsize %i\n\n\n\n", i + 1, cor->heroes[i].file, cor->heroes[i].name, cor->heroes[i].comment, cor->heroes[i].size);
+<<<<<<< HEAD
 	print_arena(cor->stage, 32);
+=======
+	ft_memset(cor->stage, 0, MEM_SIZE);
+//	print_arena(cor->stage, 32);
+>>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
 }
 
 int		main(int argc, char **argv)
@@ -76,9 +85,16 @@ int		main(int argc, char **argv)
 	map_init(&cor);
 	read_flags(&cor, argc, argv);
 	validate_heroes(&cor);
+<<<<<<< HEAD
 	init_game(&cor);
 //	init_win(&cor);
 //	dinit_win();
 	print_data(&cor);
+=======
+	print_data(&cor);
+	init_win(&cor);
+	update_arena(&cor);
+	dinit_win();
+>>>>>>> fdcbad4ff5d471abed2bfdc87ba88836091e71a7
 	system("leaks corewar");
 }
