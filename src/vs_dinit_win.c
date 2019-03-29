@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 11:21:56 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/28 13:36:14 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:02:04 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	dinit_win()
 {
-	while (getch() != 27)
-		;
 	endwin();
-	system("killall afplay");
+	system("killall sh music.sh afplay");
 	exit(EXIT_SUCCESS);
 }

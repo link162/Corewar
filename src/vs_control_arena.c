@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:43:44 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/28 15:29:31 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/29 12:59:05 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	update_arena(t_cor *cor)
 			y++;
 			x = 2;
 		}
+//		wattroff(g_win_arena, COLOR_PAIR(id + 1));
 		mvwprintw(g_win_arena, y, x, "%02x", cor->stage[i]);
 		x += 3;
 		i++;
 	}
-	refresh();
-	wrefresh(g_win_arena);
+	update(g_win_arena);
+	key_control();
 }

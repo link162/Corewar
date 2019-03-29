@@ -6,12 +6,28 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 18:33:35 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/28 17:31:45 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:51:35 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include <locale.h>
+
+void		update(WINDOW *win)
+{
+	refresh();
+	wrefresh(win);
+}
+
+static void print_border(int y)
+{
+	wattron(g_win_status_bar, COLOR_PAIR(15));
+	mvwprintw(g_win_status_bar, y, 1,
+			"___________________________________________________________");
+	mvwprintw(g_win_status_bar, ++y, 1,
+			"___________________________________________________________");
+	wattroff(g_win_status_bar, COLOR_PAIR(15));
+}
 
 static void	set_colors(void)
 {
@@ -44,12 +60,7 @@ void		print_header()
 	mvwprintw(g_win_status_bar, 6, 1, "%S",
 			L" ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝");
 	wattroff(g_win_status_bar, COLOR_PAIR(16));
-	wattron(g_win_status_bar, COLOR_PAIR(15));
-	mvwprintw(g_win_status_bar, 7, 1,
-			"___________________________________________________________");
-	mvwprintw(g_win_status_bar, 8, 1,
-			"___________________________________________________________");
-	wattroff(g_win_status_bar, COLOR_PAIR(15));
+	print_border(7);
 }
 
 void		print_players_info(t_cor *cor)
@@ -58,55 +69,62 @@ void		print_players_info(t_cor *cor)
 	int		len;
 	int		i;
 
-	y = 18;
+	y = 17;
 	i = -1;
-	while (++i < cor->count_heroes)
+	while (++i < cor->count_heroes && (y += 2))
 	{
 		mvwprintw(g_win_status_bar, ++y, 5, "PLAYER NUMBER %d", i + 1);
-		mvwprintw(g_win_status_bar, ++y, 5, "Name:");
+		mvwprintw(g_win_status_bar, ++y, 7, "name:");
 		wattron(g_win_status_bar, COLOR_PAIR(i + 1));
-		if ((len = ft_strlen(cor->heroes[i].name)) > 30)
-			{
-				mvwprintw(g_win_status_bar, ++y, 8, "%.*s", len / 2,
-						cor->heroes[i].name, &cor->heroes[i].name[len / 2]);
-				mvwprintw(g_win_status_bar, ++y, 8, &cor->heroes[i].name[len / 2]);
-			}
+		len = ft_strlen(cor->heroes[i].name);
+		if (len > 30)
+		{
+			mvwprintw(g_win_status_bar, y, 14, "%.*s", len / 2,
+					cor->heroes[i].name, &cor->heroes[i].name[len / 2]);
+			mvwprintw(g_win_status_bar, ++y, 8, &cor->heroes[i].name[len / 2]);
+		}
 		else
-			mvwprintw(g_win_status_bar, y, 8, "%s", cor->heroes[i].name);
-		y += 2;
+			mvwprintw(g_win_status_bar, y, 14, "%s", cor->heroes[i].name);
 		wattroff(g_win_status_bar, COLOR_PAIR(i + 1));
+		mvwprintw(g_win_status_bar, ++y, 7, "last live:");
+		mvwprintw(g_win_status_bar, ++y, 7, "lives in current period:");
 	}
 }
 
 void		init_status_bar(t_cor *cor)
 {
-	mvwprintw(g_win_status_bar, 10, 5, "CYCLE :");
-	mvwprintw(g_win_status_bar, 11, 5, "CYCLE TO DIE :");
-	mvwprintw(g_win_status_bar, 12, 5, "CYCLE DELTA :");
-	mvwprintw(g_win_status_bar, 13, 5, "PROCESSES :");
+	print_header();
+	mvwprintw(g_win_status_bar, 11, 5, "CYCLE :");
+	mvwprintw(g_win_status_bar, 12, 5, "CYCLE TO DIE :");
+	mvwprintw(g_win_status_bar, 13, 5, "CYCLE DELTA :");
+	mvwprintw(g_win_status_bar, 14, 5, "PROCESSES :");
+	print_border(16);
 	print_players_info(cor);
+	print_border(48);
+	print_control_key();
+	update(g_win_status_bar);
 }
 
 void		init_win(t_cor *cor)
 {
-	system("afplay -r 1.5 music.mp3 &");
+	g_music_set = ft_strdup("./music.sh 1 &");
+	system(g_music_set);
 	setlocale(LC_ALL, "");
 	initscr();
-	g_win_arena = newwin(66, 195, 0, 0);
-	g_win_status_bar = newwin(66, 61, 0, 195);
-	timeout(0);
 	noecho();
+	keypad(stdscr, TRUE);
+	timeout(0);
 	curs_set(0);
 	set_colors();
+	write(1, "\e[8;67;258t", 14);
+	g_win_arena = newwin(66, 195, 0, 0);
+	g_win_status_bar = newwin(66, 61, 0, 195);
+	g_delay = 10000;
 	wattron(g_win_status_bar, A_BOLD | COLOR_PAIR(15));
 	wattron(g_win_arena, (A_BOLD | COLOR_PAIR(15)));
 	box(g_win_arena, 0, 0);
 	box(g_win_status_bar, 0, 0);
 	wattroff(g_win_arena, COLOR_PAIR(15));
 	wattroff(g_win_status_bar, COLOR_PAIR(15));
-	print_header();
 	init_status_bar(cor);
-	refresh();
-	wrefresh(g_win_arena);
-	wrefresh(g_win_status_bar);
 }
