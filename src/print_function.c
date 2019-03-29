@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 21:07:31 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/28 21:13:05 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/29 12:36:20 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,32 @@ void		print_players(t_cor *cor)
 
 void	print_last_alive(t_cor *cor)
 {
-//	ft_printf("Contestant %d, \"%s\", has won !\n",
-//													FT_ABS(vm->last_alive->id),
-//													vm->last_alive->name);
+	ft_printf("Player %d \"%s\" won!\n", cor->last_alive + 1,
+			cor->heroes[cor->last_alive + 1].name);
 }
+
+void	print_live(t_cor *cor, int id)
+{
+	ft_printf("A process shows that player %i %s is alive\n", id + 1, cor->heroes[id].name);
+}
+
+void	print_arena(t_cor *cor)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		ft_printf("%.4p : ", i);
+		j = 0;
+		while (j < 32)
+		{
+			ft_printf("%.2x ", cor->stage[i + j]);
+			j++;
+		}
+		ft_printf("\n");
+		i += 32;
+	}
+}
+

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 12:28:58 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/28 21:02:46 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/29 13:49:45 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_cursor	*create_cursor(t_cor *cor, int id, int pos)
 	cursor->operation = 0;
 	cursor->cycle_wait = 0;
 	cursor->next = NULL;
+	ft_memset(
 	cursor->reg[0] = -(id + 1);
 	return (cursor);
 }
@@ -64,5 +65,6 @@ void		init_game(t_cor *cor)
 	}
 	if (cor->visual == 1)
 		cor->dump_cycle = -1;
+	cor->last_alive = cor->count_heroes - 1;
 	init_cursor(cor);
 }
