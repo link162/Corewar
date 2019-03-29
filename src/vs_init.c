@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 18:33:35 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 13:51:35 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:57:58 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void		init_win(t_cor *cor)
 	g_win_arena = newwin(66, 195, 0, 0);
 	g_win_status_bar = newwin(66, 61, 0, 195);
 	g_delay = 10000;
+	g_speed = 1;
 	wattron(g_win_status_bar, A_BOLD | COLOR_PAIR(15));
 	wattron(g_win_arena, (A_BOLD | COLOR_PAIR(15)));
 	box(g_win_arena, 0, 0);

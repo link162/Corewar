@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:21:42 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 13:51:09 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:58:17 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@ static void		pause_mode()
 	system(g_music_set);
 }
 
-static void		speed_up()
+/*static void		speed_up()
 {
 	free(g_music_set);
 	if (g_delay > 10)
+	{
 		g_delay /= 10;
+		
+	}
 	g_music_set = ft_strdup();
-}
+}*/
 
 void			key_control()
 {

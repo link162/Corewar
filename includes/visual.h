@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:45:44 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 13:41:34 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:57:39 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	print_control_key();
 
 char	*g_music_set;
 int		g_delay;
+int		g_speed;
 
 #endif
