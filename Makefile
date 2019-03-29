@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/03/28 21:13:58 by ybuhai           ###   ########.fr        #
+#    Updated: 2019/03/29 12:34:49 by ybuhai           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC			=	$(SRC_D)main.c \
 				$(SRC_D)init_game.c \
 				$(SRC_D)validate_heroes.c \
 				$(SRC_D)print_function.c \
+				$(SRC_D)full_game.c \
 				$(SRC_D)vs_init.c \
 				$(SRC_D)vs_dinit_win.c \
 				$(SRC_D)vs_control_arena.c \

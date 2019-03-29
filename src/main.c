@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/28 21:16:48 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/29 12:37:13 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,14 @@ void	map_init(t_cor *cor)
 {
 	ft_memset(cor->stage, 0, MEM_SIZE);
 	heroes_to_null(cor);
+	cor->cycles = 0;
 	cor->count_heroes = 0;
 	cor->visual = 0;
 	cor->dump_cycle = -2;
 	cor->list = NULL;
 	cor->cursor = NULL;
 	cor->cursors = 0;
-}
-
-void		print_arena(uint8_t *arena, int print_mode)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		ft_printf("%.4p : ", i);
-		j = 0;
-		while (j < print_mode)
-		{
-			ft_printf("%.2x ", arena[i + j]);
-			j++;
-		}
-		ft_printf("\n");
-		i += print_mode;
-	}
+	cor->cycles_to_die = CYCLE_TO_DIE;
 }
 
 void	print_data(t_cor *cor)
@@ -76,7 +58,7 @@ void	print_data(t_cor *cor)
 		ft_printf("cursor hero %i\ncarry %i\nlast_live %i\nposition %i\noperation %i\ncycle to work %i\nreg 1 %i\n\n\n", cursor->id + 1, cursor->carry, cursor->last_live, cursor->pos, cursor->operation, cursor->cycle_wait, cursor->reg[0]);
 		cursor = cursor->next;
 	}
-	print_arena(cor->stage, 32);
+	print_arena(cor);
 }
 
 int		main(int argc, char **argv)
@@ -87,7 +69,9 @@ int		main(int argc, char **argv)
 	read_flags(&cor, argc, argv);
 	validate_heroes(&cor);
 	init_game(&cor);
-	print_data(&cor);
+	print_players(&cor);
+	full_game(&cor);
+//	print_data(&cor);
 //	init_win(&cor);
 //	update_arena(&cor);
 //	dinit_win();
