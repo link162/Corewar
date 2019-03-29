@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/03/29 12:34:49 by ybuhai           ###   ########.fr        #
+#    Updated: 2019/03/29 17:14:16 by ybuhai           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,13 @@ SRC			=	$(SRC_D)main.c \
 				$(SRC_D)validate_heroes.c \
 				$(SRC_D)print_function.c \
 				$(SRC_D)full_game.c \
+				$(SRC_D)read_command.c \
 				$(SRC_D)vs_init.c \
 				$(SRC_D)vs_dinit_win.c \
 				$(SRC_D)vs_control_arena.c \
+				$(SRC_D)operation0.c \
+				$(SRC_D)operation5.c \
+				$(SRC_D)operation10.c \
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))

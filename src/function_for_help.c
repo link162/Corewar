@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 14:24:39 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/27 16:39:11 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/29 16:11:17 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ void	add_file(t_cor *cor, int *i, int argc, char **argv)
 		tmp->next = create_list(0, argv[*i]);
 	}
 	(*i)++;
+}
+
+int32_t		find_adress(int32_t i)
+{
+	i %= MEM_SIZE;
+	if (i < 0)
+		i += MEM_SIZE;
+	return (i);
 }
 
 t_files	*create_list(int i, char *data)

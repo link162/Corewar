@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/29 13:42:35 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/29 17:18:22 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_cursor
 	int				pos;
 	int				operation;
 	int				cycle_wait;
+	int				step;
 	int				reg[REG_NUMBER];
 	struct s_cursor	*next;
 }					t_cursor;
@@ -62,38 +63,38 @@ typedef struct		s_cor
 	int				last_alive;
 }					t_cor;
 
-void			op_live(t_cor *cor, t_cursor *cursor);
-void			op_ld(t_cor *cor, t_cursor *cursor);
-void			op_st(t_cor *cor, t_cursor *cursor);
-void			op_add(t_cor *cor, t_cursor *cursor);
-void			op_sub(t_cor *cor, t_cursor *cursor);
-void			op_and(t_cor *cor, t_cursor *cursor);
-void			op_or(t_cor *cor, t_cursor *cursor);
-void			op_xor(t_cor *cor, t_cursor *cursor);
-void			op_zjmp(t_cor *cor, t_cursor *cursor);
-void			op_ldi(t_cor *cor, t_cursor *cursor);
-void			op_sti(t_cor *cor, t_cursor *cursor);
-void			op_fork(t_cor *cor, t_cursor *cursor);
-void			op_lld(t_cor *cor, t_cursor *cursor);
-void			op_lldi(t_cor *cor, t_cursor *cursor);
-void			op_lfork(t_cor *cor, t_cursor *cursor);
-void			op_aff(t_cor *cor, t_cursor *cursor);
+void				op_live(t_cor *cor, t_cursor *cursor);
+void				op_ld(t_cor *cor, t_cursor *cursor);
+void				op_st(t_cor *cor, t_cursor *cursor);
+void				op_add(t_cor *cor, t_cursor *cursor);
+void				op_sub(t_cor *cor, t_cursor *cursor);
+void				op_and(t_cor *cor, t_cursor *cursor);
+void				op_or(t_cor *cor, t_cursor *cursor);
+void				op_xor(t_cor *cor, t_cursor *cursor);
+void				op_zjmp(t_cor *cor, t_cursor *cursor);
+void				op_ldi(t_cor *cor, t_cursor *cursor);
+void				op_sti(t_cor *cor, t_cursor *cursor);
+void				op_fork(t_cor *cor, t_cursor *cursor);
+void				op_lld(t_cor *cor, t_cursor *cursor);
+void				op_lldi(t_cor *cor, t_cursor *cursor);
+void				op_lfork(t_cor *cor, t_cursor *cursor);
+void				op_aff(t_cor *cor, t_cursor *cursor);
 
-typedef struct	s_operation
+typedef struct		s_operation
 {
-	char		*name;
-	uint8_t		code;
-	uint8_t		args_num;
-	int			args_types_code;
-	uint8_t		args_types[3];
-	int			modify_carry;
-	uint8_t		t_dir_size;
-	int			cycles;
-	void		(*func)(t_cor *, t_cursor *);
+	char			*name;
+	uint8_t			code;
+	uint8_t			args_num;
+	int				args_types_code;
+	uint8_t			args_types[3];
+	int				modify_carry;
+	uint8_t			t_dir_size;
+	int				cycles;
+	void			(*func)(t_cor *, t_cursor *);
 
-}				t_operation;
+}					t_operation;
 
-static t_op		g_op[16] = {
+static t_operation	g_op[16] = {
 	{
 		.name = "live",
 		.code = 0x01,
@@ -272,6 +273,12 @@ static t_op		g_op[16] = {
 	}
 };
 
+static uint8_t			g_arg_code[3] = {
+	T_REG,
+	T_DIR,
+	T_IND
+};
+
 # include "visual.h"
 
 void				read_flags(t_cor *cor, int argc, char **argv);
@@ -284,11 +291,11 @@ void				set_players(t_cor *cor);
 void				validate_heroes(t_cor *cor);
 void				init_game(t_cor *cor);
 void				full_game(t_cor *cor);
+void				read_command(t_cor *cor, t_cursor *cursor, t_operation *o);
+int32_t				find_adress(int32_t i);
 void				print_players(t_cor *cor);
 void				print_arena(t_cor *cor);
 void				print_last_alive(t_cor *cor);
 void				print_live(t_cor *cor, int id);
-
-
 
 #endif

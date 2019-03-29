@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 18:33:35 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 13:57:58 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:16:01 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void		init_status_bar(t_cor *cor)
 	print_border(16);
 	print_players_info(cor);
 	print_border(48);
-	print_control_key();
+//	print_control_key();
 	update(g_win_status_bar);
 }
 

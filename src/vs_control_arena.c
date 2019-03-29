@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:43:44 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 12:59:05 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:15:17 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	update_arena(t_cor *cor)
 {
-	int x;
+/*	int x;
 	int y;
 	int i;
 
@@ -35,5 +35,5 @@ void	update_arena(t_cor *cor)
 		i++;
 	}
 	update(g_win_arena);
-	key_control();
+	key_control();*/
 }
