@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 14:24:17 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/30 08:25:25 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/30 09:32:33 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ typedef struct		s_cursor
 	int				carry;
 	int				last_live;
 	int				pos;
-	int				operation;
+	uint8_t			operation;
 	int				cycle_wait;
 	int				step;
+	uint8_t			args_types[3];
 	int				reg[REG_NUMBER];
 	struct s_cursor	*next;
 }					t_cursor;

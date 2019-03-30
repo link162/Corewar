@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:38:17 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/30 09:13:54 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/30 09:36:19 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	check_cursor(t_cursor *cursor, t_cor *cor)
 		if (new)
 		{
 			read_command(cor, cursor, new);
-	/*		if (validate_args(cursor, new) && is_args_valid(cursor, cor, new))
+			if (validate_args(cursor, new) && check_args(cursor, cor, new))
 				new->func(cor, cursor);
 			else
-				cursor->step += calc_step(cursor, new);*/
+				cursor->step += calc_step(cursor, new);
 		}
 		else
 			cursor->step = 1;
