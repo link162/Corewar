@@ -6,7 +6,11 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/29 15:39:16 by akorobov         ###   ########.fr       */
+=======
+/*   Updated: 2019/03/29 17:18:22 by ybuhai           ###   ########.fr       */
+>>>>>>> e8f838fdd7efcc5831d8e43a2d55fabbc7dbaa2f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +23,7 @@
 # define USAGE "Usage: ./corewar [-d N] [-v] [-n N] <champion1.cor> <...>"
 # define ERROR_FILE "Error file"
 
+<<<<<<< HEAD
 void			op_live(t_cor *cor, t_cursor *cursor);
 void			op_ld(t_cor *cor, t_cursor *cursor);
 void			op_st(t_cor *cor, t_cursor *cursor);
@@ -37,20 +42,90 @@ void			op_lfork(t_cor *cor, t_cursor *cursor);
 void			op_aff(t_cor *cor, t_cursor *cursor);
 
 typedef struct	s_op
+=======
+typedef struct		s_cursor
 {
-	char		*name;
-	uint8_t		code;
-	uint8_t		args_num;
-	int			args_types_code;
-	uint8_t		args_types[3];
-	int			modify_carry;
-	uint8_t		t_dir_size;
-	int			cycles;
-	void		(*func)(t_cor *, t_cursor *);
+	int				id;
+	int				carry;
+	int				last_live;
+	int				pos;
+	int				operation;
+	int				cycle_wait;
+	int				step;
+	int				reg[REG_NUMBER];
+	struct s_cursor	*next;
+}					t_cursor;
 
+typedef struct		s_hero
+{
+	int				id;
+	int				size;
+	char			*name;
+	char			*comment;
+	char			*file;
+	uint8_t			*code;
+}					t_hero;
+
+typedef struct		s_files
+{
+	char			*file;
+	int				id;
+	struct s_files	*next;
+}					t_files;
+
+typedef struct		s_cor
+{
+	uint8_t			stage[MEM_SIZE];
+	t_hero			heroes[MAX_PLAYERS];
+	t_files			*list;
+	t_cursor		*cursor;
+	ssize_t			cycles;
+	ssize_t			cycles_to_die;
+	ssize_t			cycles_after_check;
+	int				cursors;
+	int				count_heroes;
+	int				dump_cycle;
+	int				visual;
+	int				last_alive;
+}					t_cor;
+
+void				op_live(t_cor *cor, t_cursor *cursor);
+void				op_ld(t_cor *cor, t_cursor *cursor);
+void				op_st(t_cor *cor, t_cursor *cursor);
+void				op_add(t_cor *cor, t_cursor *cursor);
+void				op_sub(t_cor *cor, t_cursor *cursor);
+void				op_and(t_cor *cor, t_cursor *cursor);
+void				op_or(t_cor *cor, t_cursor *cursor);
+void				op_xor(t_cor *cor, t_cursor *cursor);
+void				op_zjmp(t_cor *cor, t_cursor *cursor);
+void				op_ldi(t_cor *cor, t_cursor *cursor);
+void				op_sti(t_cor *cor, t_cursor *cursor);
+void				op_fork(t_cor *cor, t_cursor *cursor);
+void				op_lld(t_cor *cor, t_cursor *cursor);
+void				op_lldi(t_cor *cor, t_cursor *cursor);
+void				op_lfork(t_cor *cor, t_cursor *cursor);
+void				op_aff(t_cor *cor, t_cursor *cursor);
+
+typedef struct		s_operation
+>>>>>>> e8f838fdd7efcc5831d8e43a2d55fabbc7dbaa2f
+{
+	char			*name;
+	uint8_t			code;
+	uint8_t			args_num;
+	int				args_types_code;
+	uint8_t			args_types[3];
+	int				modify_carry;
+	uint8_t			t_dir_size;
+	int				cycles;
+	void			(*func)(t_cor *, t_cursor *);
+
+<<<<<<< HEAD
 }				t_op;
+=======
+}					t_operation;
+>>>>>>> e8f838fdd7efcc5831d8e43a2d55fabbc7dbaa2f
 
-static t_op		g_op[16] = {
+static t_operation	g_op[16] = {
 	{
 		.name = "live",
 		.code = 0x01,
@@ -229,6 +304,16 @@ static t_op		g_op[16] = {
 	}
 };
 
+<<<<<<< HEAD
+=======
+static uint8_t			g_arg_code[3] = {
+	T_REG,
+	T_DIR,
+	T_IND
+};
+
+# include "visual.h"
+>>>>>>> e8f838fdd7efcc5831d8e43a2d55fabbc7dbaa2f
 
 void				read_flags(t_cor *cor, int argc, char **argv);
 void				error_case(char *str);
@@ -240,11 +325,11 @@ void				set_players(t_cor *cor);
 void				validate_heroes(t_cor *cor);
 void				init_game(t_cor *cor);
 void				full_game(t_cor *cor);
+void				read_command(t_cor *cor, t_cursor *cursor, t_operation *o);
+int32_t				find_adress(int32_t i);
 void				print_players(t_cor *cor);
 void				print_arena(t_cor *cor);
 void				print_last_alive(t_cor *cor);
 void				print_live(t_cor *cor, int id);
-
-
 
 #endif

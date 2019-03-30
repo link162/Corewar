@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:38:17 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/29 13:43:35 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/29 16:29:53 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,36 @@
 
 void	set_operation(t_cor *cor, t_cursor *cursor)
 {
-	cursor->operation = vm->arena[cursor->pos];
-	if (vm->arena[current->pc] >= 0x01 && vm->arena[current->pc] <= 0x10)
-		current->cycles_to_exec = g_op[INDEX(current->op_code)].cycles;
+	cursor->operation = cor->stage[cursor->pos];
+	if (cor->stage[cursor->pos] >= 0x01 && cor->stage[cursor->pos] <= 0x10)
+		cursor->cycle_wait = g_op[cursor->operation - 1].cycles;
 }
 
 void	check_cursor(t_cursor *cursor, t_cor *cor)
 {
-	if (cursor->cycles_wait == 0)
+	t_operation	*new;
+
+	if (!cursor->cycle_wait)
 		set_operation(cor, cursor);
-	if (cursor->cycles_wait > 0)
-		cursor->cycles_wait--;
-	if (cursor->cycles_wait == 0)
+	if (cursor->cycle_wait > 0)
+		cursor->cycle_wait--;
+	if (!cursor->cycle_wait)
 	{
+		new = NULL;
 		if (cursor->operation >= 0x01 && cursor->operation <= 0x10)
-			op = &g_op[INDEX(cursor->op_code)];
-		if (op)
+			new = &g_op[cursor->operation - 1];
+		if (new)
 		{
-			parse_types_code(vm, cursor, op);
-			if (is_arg_types_valid(cursor, op) && is_args_valid(cursor, vm, op))
-				op->func(vm, cursor);
+			read_command(cor, cursor, new);
+	/*		if (is_arg_types_valid(cursor, op) && is_args_valid(cursor, vm, op))
+				new->func(cor, cursor);
 			else
-				cursor->step += calc_step(cursor, op);
-			if (vm->log & PC_MOVEMENT_LOG && cursor->step)
-				log_pc_movements(vm->arena, cursor);
+				cursor->step += calc_step(cursor, op);*/
 		}
 		else
-			cursor->step = OP_CODE_LEN;
-		move_cursor(vm, cursor);
+			cursor->step = 1;
+	}
+//		move_cursor(vm, cursor);
 }
 
 void	run_cycle(t_cor *cor)
@@ -50,7 +52,7 @@ void	run_cycle(t_cor *cor)
 
 	cor->cycles++;
 	cor->cycles_after_check++;
-	tmp = vm->cursors;
+	tmp = cor->cursor;
 	while (tmp)
 	{
 		check_cursor(tmp, cor);
