@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:21:42 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 13:58:17 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/30 09:13:05 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,56 @@ static void		pause_mode()
 	system(g_music_set);
 }
 
-/*static void		speed_up()
+
+static void		speed_up()
 {
-	free(g_music_set);
+	char		tmp[25];
+	char		sp[20];
+	
+	ft_strclr(sp);
+	ft_strdel(&g_music_set);
+	if (g_delay < 1000000000)
+	{
+		g_delay *= 10;
+		g_speed += 0.1;
+		ft_strcpy(tmp, "./music.sh ");
+		ftoa(g_speed, sp, 1);
+		ft_strcat(tmp, sp);
+		ft_strcat(tmp, " &");
+		g_music_set = ft_strdup(tmp);
+		mvwprintw(g_win_status_bar, 64, 45, "Speed ↑ = %s", sp);
+		system("killall sh music.sh afplay");
+		system(g_music_set);
+		update(g_win_status_bar);
+	}
+	else
+		mvwprintw(g_win_status_bar, 64, 45, "Its max speed");
+}
+
+static void		slow_down()
+{
+	char		tmp[25];
+	char		sp[20];
+	
+	ft_strclr(sp);
+	ft_strdel(&g_music_set);
 	if (g_delay > 10)
 	{
 		g_delay /= 10;
-		
+		g_speed -= 0.2;
+		ft_strcpy(tmp, "./music.sh ");
+		ftoa(g_speed, sp, 1);
+		ft_strcat(tmp, sp);
+		ft_strcat(tmp, " &");
+		g_music_set = ft_strdup(tmp);
+		mvwprintw(g_win_status_bar, 64, 45, "Speed ↓ = %s", sp);
+		system("killall sh music.sh afplay");
+		system(g_music_set);
+		update(g_win_status_bar);
 	}
-	g_music_set = ft_strdup();
-}*/
+	else
+		mvwprintw(g_win_status_bar, 64, 45, "Its min speed");
+}
 
 void			key_control()
 {
@@ -57,9 +97,9 @@ void			key_control()
 			dinit_win();
 		else if (ch == KEY_SPACE)
 			pause_mode();
-/*		else if (ch == KEY_UP)
+		else if (ch == KEY_UP)
 			speed_up();
 		else if (ch == KEY_DOWN)
-			slow_down();*/
+			slow_down();
 	}
 }

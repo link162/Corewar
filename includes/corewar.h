@@ -6,7 +6,11 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/30 09:13:57 by ybuhai           ###   ########.fr       */
+=======
+/*   Updated: 2019/03/30 08:24:24 by akorobov         ###   ########.fr       */
+>>>>>>> 8d98744d762a2347d246691920cdc83c6002f618
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +18,10 @@
 # define COREWAR_H
 # include "../libftprintf/libftprintf.h"
 # include "op.h"
+# include "struct.h"
+# include "visual.h"
 # define USAGE "Usage: ./corewar [-d N] [-v] [-n N] <champion1.cor> <...>"
 # define ERROR_FILE "Error file"
-
-typedef struct		s_cursor
-{
-	int				id;
-	int				carry;
-	int				last_live;
-	int				pos;
-	int				operation;
-	int				cycle_wait;
-	int				step;
-	int				reg[REG_NUMBER];
-	struct s_cursor	*next;
-}					t_cursor;
-
-typedef struct		s_hero
-{
-	int				id;
-	int				size;
-	char			*name;
-	char			*comment;
-	char			*file;
-	uint8_t			*code;
-}					t_hero;
-
-typedef struct		s_files
-{
-	char			*file;
-	int				id;
-	struct s_files	*next;
-}					t_files;
-
-typedef struct		s_cor
-{
-	uint8_t			stage[MEM_SIZE];
-	t_hero			heroes[MAX_PLAYERS];
-	t_files			*list;
-	t_cursor		*cursor;
-	ssize_t			cycles;
-	ssize_t			cycles_to_die;
-	ssize_t			cycles_after_check;
-	int				cursors;
-	int				count_heroes;
-	int				dump_cycle;
-	int				visual;
-	int				last_alive;
-}					t_cor;
 
 void				op_live(t_cor *cor, t_cursor *cursor);
 void				op_ld(t_cor *cor, t_cursor *cursor);
@@ -92,7 +52,7 @@ typedef struct		s_operation
 	int				cycles;
 	void			(*func)(t_cor *, t_cursor *);
 
-}					t_operation;
+}				t_operation;
 
 static t_operation	g_op[16] = {
 	{

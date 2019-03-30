@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:43:44 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 17:15:17 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/29 14:18:10 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	update_arena(t_cor *cor)
 {
-/*	int x;
+	int x;
 	int y;
 	int i;
 
 	i = 0;
 	x = 2;
 	y = 0;
+	write(1, "\e[8;67;258t", 14);
 	wattroff(g_win_arena, A_BOLD);
 	while (i < MEM_SIZE)
 	{
@@ -35,5 +36,5 @@ void	update_arena(t_cor *cor)
 		i++;
 	}
 	update(g_win_arena);
-	key_control();*/
+	key_control();
 }

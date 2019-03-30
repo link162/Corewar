@@ -6,13 +6,12 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:45:44 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 13:57:39 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/30 09:02:13 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VIUSAL_H
 # define VIUSAL_H
-
 # include "corewar.h"
 # include <ncurses.h>
 # define KEY_ESC 27
@@ -28,9 +27,14 @@ void	update_arena(t_cor *cor);
 void	update(WINDOW *win);
 void	key_control();
 void	print_control_key();
+void	print_players_info(t_cor *cor);
+void	print_header();
+void	init_status_bar(t_cor *cor);
+void	print_border(int y);
+void	ftoa(float n, char *ret, int afterpoint);
 
 char	*g_music_set;
 int		g_delay;
-int		g_speed;
+float	g_speed;
 
 #endif
