@@ -6,11 +6,22 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:08:35 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/29 16:31:52 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/30 09:08:36 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+int		validate_args(t_cursor *cursor, t_operation *operation)
+{
+	int i;
+
+	i = -1;
+	while (++i < operation->args_num)
+		if (!(cursor->args_types[i] & operation->args_types[i]))
+			return (0);
+	return (1);
+}
 
 void	read_command(t_cor *cor, t_cursor *cursor, t_operation *operation)
 {

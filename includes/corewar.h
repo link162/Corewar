@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/29 17:18:22 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/03/30 09:13:57 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,5 +297,6 @@ void				print_players(t_cor *cor);
 void				print_arena(t_cor *cor);
 void				print_last_alive(t_cor *cor);
 void				print_live(t_cor *cor, int id);
+int					validate_args(t_cursor *cursor, t_operation *operation);
 
 #endif
