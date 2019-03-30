@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 14:24:17 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 14:47:43 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/03/30 08:25:25 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct		s_cursor
 	int				pos;
 	int				operation;
 	int				cycle_wait;
+	int				step;
 	int				reg[REG_NUMBER];
 	struct s_cursor	*next;
 }					t_cursor;
