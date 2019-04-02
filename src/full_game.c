@@ -6,11 +6,24 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:38:17 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/30 09:36:19 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/02 13:15:27 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+int		make_step(t_cursor *cursor, t_operation *operation)
+{
+	int		i;
+	int		step;
+
+	i = -1;
+	step = 0;
+	step += 1 + (operation->args_types_code ? 1 : 0);
+	while (++i < g_op[cursor->operation - 1].args_num)
+		step += count_step(cursor->args_types[i], operation);
+	return (step);
+}
 
 void	set_operation(t_cor *cor, t_cursor *cursor)
 {
@@ -34,16 +47,16 @@ void	check_cursor(t_cursor *cursor, t_cor *cor)
 			new = &g_op[cursor->operation - 1];
 		if (new)
 		{
-			read_command(cor, cursor, new);
+			read_argtype(cor, cursor, new);
 			if (validate_args(cursor, new) && check_args(cursor, cor, new))
 				new->func(cor, cursor);
 			else
-				cursor->step += calc_step(cursor, new);
+				cursor->step += make_step(cursor, new);
 		}
 		else
 			cursor->step = 1;
 	}
-//		move_cursor(vm, cursor);
+		next_op(cor, cursor);
 }
 
 void	run_cycle(t_cor *cor)
@@ -60,11 +73,6 @@ void	run_cycle(t_cor *cor)
 	}
 }
 
-void	check_who_die(t_cor *cor)
-{
-	
-}
-
 void	full_game(t_cor *cor)
 {
 	while (cor->cursors)
@@ -78,6 +86,5 @@ void	full_game(t_cor *cor)
 		if (cor->cycles_to_die == cor->cycles_after_check ||
 				cor->cycles_to_die <= 0)
 			check_who_die(cor);
-		cor->cursors--;
 	}
 }

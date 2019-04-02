@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 14:24:17 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/30 09:32:33 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/02 14:20:09 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct		s_hero
 	char			*comment;
 	char			*file;
 	uint8_t			*code;
+	int				live;
+	int				last_live;
 }					t_hero;
 
 typedef struct		s_files
@@ -54,6 +56,8 @@ typedef struct		s_cor
 	ssize_t			cycles;
 	ssize_t			cycles_to_die;
 	ssize_t			cycles_after_check;
+	ssize_t			check_in;
+	ssize_t			live_in;
 	int				cursors;
 	int				count_heroes;
 	int				dump_cycle;

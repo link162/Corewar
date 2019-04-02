@@ -6,11 +6,30 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:08:35 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/30 10:47:11 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/01 18:44:08 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+int8_t	count_size(t_cor *cor, int pos, int step)
+{
+	int8_t reg;
+
+	reg = cor->stage[find_adress(pos + step)];
+	return (reg >= 1 && reg <= REG_NUMBER);
+}
+
+int		count_step(uint8_t type, t_operation *operation)
+{
+	if (type & T_REG)
+		return (T_REG);
+	else if (type & T_DIR)
+		return (operation->t_dir_size);
+	else if (type & T_IND)
+		return (IND_SIZE);
+	return (0);
+}
 
 int		check_args(t_cursor *cursor, t_cor *cor, t_operation *operation)
 {
@@ -22,9 +41,9 @@ int		check_args(t_cursor *cursor, t_cor *cor, t_operation *operation)
 	while (i < operation->args_num)
 	{
 		if ((cursor->args_types[i] == T_REG)
-			&& !is_register(vm, cursor->pc, step))
+			&& !count_size(cor, cursor->pos, step))
 			return (0);
-		step += step_size(cursor->args_types[i], op);
+		step += count_step(cursor->args_types[i], operation);
 		i++;
 	}
 	return (1);
@@ -41,7 +60,7 @@ int		validate_args(t_cursor *cursor, t_operation *operation)
 	return (1);
 }
 
-void	read_command(t_cor *cor, t_cursor *cursor, t_operation *operation)
+void	read_argtype(t_cor *cor, t_cursor *cursor, t_operation *operation)
 {
 	int8_t atc;
 

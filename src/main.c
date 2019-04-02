@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/30 09:12:39 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:56:11 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	heroes_to_null(t_cor *cor)
 	{
 		cor->heroes[i].name = NULL;
 		cor->heroes[i].file = NULL;
+		cor->heroes[i].comment = NULL;
+		cor->heroes[i].code = NULL;
+		cor->heroes[i].live = 0;
+		cor->heroes[i].last_live = 0;
 		i++;
 	}
 }
@@ -36,6 +40,8 @@ void	map_init(t_cor *cor)
 	cor->list = NULL;
 	cor->cursor = NULL;
 	cor->cursors = 0;
+	cor->check_in = 0;
+	cor->live_in = 0;
 	cor->cycles_to_die = CYCLE_TO_DIE;
 }
 

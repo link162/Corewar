@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/30 09:47:17 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/02 13:25:18 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,7 +247,7 @@ void				set_players(t_cor *cor);
 void				validate_heroes(t_cor *cor);
 void				init_game(t_cor *cor);
 void				full_game(t_cor *cor);
-void				read_command(t_cor *cor, t_cursor *cursor, t_operation *o);
+void				read_argtype(t_cor *cor, t_cursor *cursor, t_operation *o);
 int32_t				find_adress(int32_t i);
 void				print_players(t_cor *cor);
 void				print_arena(t_cor *cor);
@@ -255,5 +255,11 @@ void				print_last_alive(t_cor *cor);
 void				print_live(t_cor *cor, int id);
 int					validate_args(t_cursor *cursor, t_operation *operation);
 int					check_args(t_cursor *cursor, t_cor *cor, t_operation *operation);
+int					count_step(uint8_t type, t_operation *operation);
+int8_t				count_size(t_cor *cor, int pos, int step);
+void				next_op(t_cor *cor, t_cursor *cursor);
+void				check_who_die(t_cor *cor);
+
+void				print_data(t_cor *cor);
 
 #endif
