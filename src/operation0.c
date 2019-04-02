@@ -6,29 +6,32 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:09:54 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 14:21:07 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/02 18:21:30 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 void				op_live(t_cor *cor, t_cursor *cursor)
-{/*
+{
 	int		id;
-	t_player	*hero;
+	t_hero	*hero;
 
+	ft_printf("live!!!\n");
 	cursor->step++;
-	id = get_op_arg(cor, cursor, 1, false);
-	cor->lives_num++;
+	id = take_op(cor, cursor, 1, false);
+	cor->live_in++;
 	cursor->last_live = cor->cycles;
 	hero = NULL;
 	if (id <= -1 && id >= -cor->count_heroes)
 	{
-		hero = vm->players[INDEX(FT_ABS(id))];
-		hero->last_live = vm->cycles;
-		hero->current_lives_num++;
-		cor->last_alive = hero;
-	}*/
+		if (id < 0)
+			id *= -1;
+		hero = &cor->heroes[id - 1];
+		hero->last_live = cor->cycles;
+		hero->live++;
+		cor->last_alive = id - 1;
+	}
 }
 
 void				op_ld(t_cor *cor, t_cursor *cursor)

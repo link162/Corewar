@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/04/01 18:53:57 by ybuhai           ###   ########.fr        #
+#    Updated: 2019/04/02 18:04:47 by ybuhai           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC			=	$(SRC_D)main.c \
 				$(SRC_D)operation0.c \
 				$(SRC_D)operation5.c \
 				$(SRC_D)operation10.c \
+				$(SRC_D)operation16.c \
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))

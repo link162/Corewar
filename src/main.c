@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 12:56:11 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/02 18:25:28 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		main(int argc, char **argv)
 	init_game(&cor);
 	print_players(&cor);
 	full_game(&cor);
+	print_last_alive(&cor);
 //	print_data(&cor);
 //	init_win(&cor);
 //	update_arena(&cor);

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 13:25:18 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/02 17:50:05 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,6 +259,7 @@ int					count_step(uint8_t type, t_operation *operation);
 int8_t				count_size(t_cor *cor, int pos, int step);
 void				next_op(t_cor *cor, t_cursor *cursor);
 void				check_who_die(t_cor *cor);
+int 				take_op(t_cor *cor, t_cursor *cursor, uint8_t i, int mod);
 
 void				print_data(t_cor *cor);
 
