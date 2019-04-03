@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:38:17 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 18:28:17 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 18:03:15 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	full_game(t_cor *cor)
 {
 	while (cor->cursors)
 	{
+//		ft_printf("pos %i\n", cor->cursor->cycle_wait);
 		if (cor->dump_cycle == cor->cycles)
 		{
 			print_arena(cor);

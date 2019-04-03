@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 21:07:31 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 18:26:13 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/02 19:14:37 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void		print_players(t_cor *cor)
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 				id + 1, cor->heroes[id].size, cor->heroes[id].name,
 				cor->heroes[id].comment);
-		id++;
 	}
 }
 

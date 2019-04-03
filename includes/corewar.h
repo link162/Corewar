@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 17:50:05 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 18:15:10 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "visual.h"
 # define USAGE "Usage: ./corewar [-d N] [-v] [-n N] <champion1.cor> <...>"
 # define ERROR_FILE "Error file"
+# define OP_SIZE 1
+# define ARG_SIZE 1
+# define REG_SIZE 1
 
 void				op_live(t_cor *cor, t_cursor *cursor);
 void				op_ld(t_cor *cor, t_cursor *cursor);
