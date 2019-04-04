@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 18:54:33 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 13:36:21 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 20:54:35 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	check_who_die(t_cor *cor)
 	if (cor->check_in == MAX_CHECKS || cor->live_in >= NBR_LIVE)
 	{
 		cor->cycles_to_die -= CYCLE_DELTA;
+		if (cor->log == 2)
+			ft_printf("Cycle to die is now %i\n", cor->cycles_to_die);
 		cor->check_in = 0;
 	}
 	while (++i < cor->count_heroes)
@@ -73,4 +75,5 @@ void	check_who_die(t_cor *cor)
 		cor->heroes[i].live = 0;
 	}
 	cor->live_in = 0;
+	cor->cycles_after_check = 0;
 }

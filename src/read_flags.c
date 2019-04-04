@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 16:42:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/27 18:45:59 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 20:55:19 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,21 @@ void	num_flag(t_cor *cor, int *i, int argc, char **argv)
 	(*i)++;
 }
 
+void	log_flag(t_cor *cor, int *i, int argc, char **argv)
+{
+	int z;
+
+	if (*i + 1 >= argc)
+		error_case(USAGE);
+	(*i)++;
+	z = mod_atoi(argv[*i]);
+	if (z == 1 || z == 2 || z == 4 || z == 8)
+		cor->log = z;
+	else
+		error_case(USAGE);
+	(*i)++;
+}
+
 void	read_flags(t_cor *cor, int argc, char **argv)
 {
 	int i;
@@ -68,6 +83,8 @@ void	read_flags(t_cor *cor, int argc, char **argv)
 			dump_flag(cor, &i, argc, argv);
 		else if (!ft_strcmp(argv[i], "-n"))
 			num_flag(cor, &i, argc, argv);
+		else if (!ft_strcmp(argv[i], "-l"))
+			log_flag(cor, &i, argc, argv);
 		else if (!is_filename(argv[i]))
 			add_file(cor, &i, argc, argv);
 		else

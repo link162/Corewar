@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/03 18:15:10 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 18:39:29 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include "visual.h"
 # define USAGE "Usage: ./corewar [-d N] [-v] [-n N] <champion1.cor> <...>"
 # define ERROR_FILE "Error file"
-# define OP_SIZE 1
-# define ARG_SIZE 1
-# define REG_SIZE 1
+# define OP_LEN 1
+# define ARG_LEN 1
+# define REG_LEN 1
 
 void				op_live(t_cor *cor, t_cursor *cursor);
 void				op_ld(t_cor *cor, t_cursor *cursor);
@@ -238,7 +238,6 @@ static uint8_t			g_arg_code[3] = {
 	T_IND
 };
 
-# include "visual.h"
 
 void				read_flags(t_cor *cor, int argc, char **argv);
 void				error_case(char *str);
@@ -250,19 +249,21 @@ void				set_players(t_cor *cor);
 void				validate_heroes(t_cor *cor);
 void				init_game(t_cor *cor);
 void				full_game(t_cor *cor);
-void				read_argtype(t_cor *cor, t_cursor *cursor, t_operation *o);
+void				read_argtype(t_cor *cor, t_cursor *curs, t_operation *o);
 int32_t				find_adress(int32_t i);
 void				print_players(t_cor *cor);
 void				print_arena(t_cor *cor);
 void				print_last_alive(t_cor *cor);
 void				print_live(t_cor *cor, int id);
 int					validate_args(t_cursor *cursor, t_operation *operation);
-int					check_args(t_cursor *cursor, t_cor *cor, t_operation *operation);
+int					check_args(t_cursor *cursor, t_cor *cor, t_operation *o);
 int					count_step(uint8_t type, t_operation *operation);
 int8_t				count_size(t_cor *cor, int pos, int step);
 void				next_op(t_cor *cor, t_cursor *cursor);
 void				check_who_die(t_cor *cor);
 int 				take_op(t_cor *cor, t_cursor *cursor, uint8_t i, int mod);
+void				int_to_byte(t_cor *cor, int32_t a, int32_t m, int32_t t);
+int32_t				byte_to_int(t_cor *cor, int32_t addr, int32_t size);
 
 void				print_data(t_cor *cor);
 

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:12:26 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/03 18:15:12 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 22:13:49 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void				op_sti(t_cor *cor, t_cursor *cursor)
 {
-	int32_t	r_id;
+	int32_t	reg;
 	int32_t	value;
-	int32_t	addr_1;
-	int32_t	addr_2;
+	int32_t	arg2;
+	int32_t	arg3;
 
-	cursor->step += OP_SIZE + ARGS_CODE_LEN;
-	r_id = get_byte(vm, cursor->pc, cursor->step);
-	value = cursor->reg[INDEX(r_id)];
+	cursor->step += OP_LEN + ARG_LEN;
+	reg = cor->stage[find_adress(cursor->pos + cursor->step)];
+	value = cursor->reg[reg - 1];
 	cursor->step += REG_LEN;
-	addr_1 = get_op_arg(vm, cursor, 2, true);
-	addr_2 = get_op_arg(vm, cursor, 3, true);
-	int32_to_bytecode(vm->arena,
-			(cursor->pc + ((addr_1 + addr_2) % IDX_MOD)), value, DIR_SIZE);
+	arg2 = take_op(cor, cursor, 2, true);
+	arg3 = take_op(cor, cursor, 3, true);
+	int_to_byte(cor, (cursor->pos + ((arg2 + arg3) % IDX_MOD)), value, DIR_SIZE);
 }
 
 void				op_fork(t_cor *cor, t_cursor *cursor)

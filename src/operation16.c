@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 14:51:43 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 18:07:49 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 18:37:50 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ inline int8_t	get_byte(t_vm *vm, int32_t pc, int32_t step)
 	return (vm->arena[calc_addr(pc + step)]);
 }
 */
+
+void		int_to_byte(t_cor *cor, int32_t addr, int32_t value, int32_t size)
+{
+	int8_t i;
+
+	i = 0;
+	while (size)
+	{
+		cor->stage[find_adress(addr + size - 1)] = (uint8_t)((value >> i) & 0xFF);
+		i += 8;
+		size--;
+	}
+}
+
 int32_t		byte_to_int(t_cor *cor, int32_t addr, int32_t size)
 {
 	int32_t		result;

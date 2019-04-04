@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 14:24:17 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/02 16:21:10 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 19:15:32 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct		s_cor
 	ssize_t			cycles_after_check;
 	ssize_t			check_in;
 	ssize_t			live_in;
+	int				log;
 	int				cursors;
 	int				count_heroes;
 	int				dump_cycle;

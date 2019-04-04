@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 18:25:28 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/03 20:54:50 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	map_init(t_cor *cor)
 	cor->cursors = 0;
 	cor->check_in = 0;
 	cor->live_in = 0;
+	cor->log = 0;
 	cor->cycles_to_die = CYCLE_TO_DIE;
 }
 
