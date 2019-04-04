@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 12:28:58 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/03/29 16:25:23 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 15:48:19 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ t_cursor	*create_cursor(t_cor *cor, int id, int pos)
 	ft_memset(&(cursor->reg), 0, 16);
 	cursor->reg[0] = -(id + 1);
 	return (cursor);
+}
+
+t_cursor	*copy_cursor(t_cor *cor, t_cursor *cursor, int32_t addr)
+{
+	t_cursor	*new;
+	int			i;
+
+	new = create_cursor(cor, 0, find_adress(cursor->pos + addr));
+	i = -1;
+	while (++i < REG_NUMBER)
+		new->reg[i] = cursor->reg[i];
+	new->carry = cursor->carry;
+	new->last_live = cursor->last_live;
+	return (new);
 }
 
 void	init_cursor(t_cor *cor)

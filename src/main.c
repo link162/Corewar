@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/03 20:54:50 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 16:00:40 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,5 @@ int		main(int argc, char **argv)
 //	init_win(&cor);
 //	update_arena(&cor);
 //	dinit_win();
-	system("leaks corewar");
+//	system("leaks corewar");
 }

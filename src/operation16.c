@@ -6,17 +6,11 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 14:51:43 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/03 18:37:50 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:29:29 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-/*
-inline int8_t	get_byte(t_vm *vm, int32_t pc, int32_t step)
-{
-	return (vm->arena[calc_addr(pc + step)]);
-}
-*/
 
 void		int_to_byte(t_cor *cor, int32_t addr, int32_t value, int32_t size)
 {
