@@ -6,13 +6,13 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:21:42 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/30 09:13:05 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/04 19:45:32 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visual.h"
 
-void		print_control_key()
+void			print_control_key(void)
 {
 	mvwprintw(g_win_status_bar, 52, 20, "OPTIONS");
 	mvwprintw(g_win_status_bar, 54, 5, "[SPACE] == pause/resume");
@@ -21,7 +21,7 @@ void		print_control_key()
 	mvwprintw(g_win_status_bar, 57, 5, "[ESC] == exit");
 }
 
-static void		pause_mode()
+static void		pause_mode(void)
 {
 	int		ch;
 
@@ -36,12 +36,11 @@ static void		pause_mode()
 	system(g_music_set);
 }
 
-
-static void		speed_up()
+static void		speed_up(void)
 {
 	char		tmp[25];
 	char		sp[20];
-	
+
 	ft_strclr(sp);
 	ft_strdel(&g_music_set);
 	if (g_delay < 1000000000)
@@ -62,11 +61,11 @@ static void		speed_up()
 		mvwprintw(g_win_status_bar, 64, 45, "Its max speed");
 }
 
-static void		slow_down()
+static void		slow_down(void)
 {
 	char		tmp[25];
 	char		sp[20];
-	
+
 	ft_strclr(sp);
 	ft_strdel(&g_music_set);
 	if (g_delay > 10)
@@ -87,7 +86,7 @@ static void		slow_down()
 		mvwprintw(g_win_status_bar, 64, 45, "Its min speed");
 }
 
-void			key_control()
+void			key_control(void)
 {
 	int		ch;
 

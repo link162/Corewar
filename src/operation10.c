@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:12:26 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 15:50:13 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 19:51:23 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void				op_fork(t_cor *cor, t_cursor *cursor)
 
 	cursor->step += OP_LEN;
 	addr = take_op(cor, cursor, 1, 1);
-	new = copy_cursor(cor, cursor, addr % IDX_MOD);
+	new = copy_cursor(cursor, addr % IDX_MOD);
 	new->next = cor->cursor;
 	cor->cursor = new;
 	cor->cursors++;
@@ -75,7 +75,7 @@ void				op_lfork(t_cor *cor, t_cursor *cursor)
 
 	cursor->step += OP_LEN;
 	addr = take_op(cor, cursor, 1, 1);
-	new = copy_cursor(cor, cursor, addr);
+	new = copy_cursor(cursor, addr);
 	new->next = cor->cursor;
 	cor->cursor = new;
 	cor->cursors++;

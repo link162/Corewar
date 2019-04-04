@@ -6,12 +6,12 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:45:44 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/30 09:02:13 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/04 19:42:32 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIUSAL_H
-# define VIUSAL_H
+#ifndef VISUAL_H
+# define VISUAL_H
 # include "corewar.h"
 # include <ncurses.h>
 # define KEY_ESC 27

@@ -6,13 +6,13 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 18:54:33 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/03 20:54:35 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 19:52:06 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	next_op(t_cor *cor, t_cursor *cursor)
+void	next_op(t_cursor *cursor)
 {
 	cursor->pos = find_adress(cursor->pos + cursor->step);
 	cursor->step = 0;
@@ -30,7 +30,6 @@ void	check_cursors(t_cor *cor)
 	t_cursor *prev;
 	t_cursor *tmp;
 	t_cursor *new;
-	int i = 0;
 
 	prev = NULL;
 	tmp = cor->cursor;

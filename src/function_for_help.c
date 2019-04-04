@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 14:24:39 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 13:09:35 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 19:48:46 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		is_filename(char *str)
 		return (1);
 }
 
-void	add_file(t_cor *cor, int *i, int argc, char **argv)
+void	add_file(t_cor *cor, int *i, char **argv)
 {
 	t_files *tmp;
 

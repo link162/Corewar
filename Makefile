@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/04/02 18:04:47 by ybuhai           ###   ########.fr        #
+#    Updated: 2019/04/04 19:47:50 by ybuhai           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
 
 INCLUDE		=	-I includes/
-CFLAGS		=	-g3 -O0
+CFLAGS		=	-Wall -Wextra -Werror -Ofast
 LIBNC		=	-lncurses
 C			=	gcc
 

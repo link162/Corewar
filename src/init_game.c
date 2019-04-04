@@ -6,13 +6,13 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 12:28:58 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 15:48:19 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 19:50:49 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_cursor	*create_cursor(t_cor *cor, int id, int pos)
+t_cursor	*create_cursor(int id, int pos)
 {
 	t_cursor		*cursor;
 
@@ -31,12 +31,12 @@ t_cursor	*create_cursor(t_cor *cor, int id, int pos)
 	return (cursor);
 }
 
-t_cursor	*copy_cursor(t_cor *cor, t_cursor *cursor, int32_t addr)
+t_cursor	*copy_cursor(t_cursor *cursor, int32_t addr)
 {
 	t_cursor	*new;
 	int			i;
 
-	new = create_cursor(cor, 0, find_adress(cursor->pos + addr));
+	new = create_cursor(0, find_adress(cursor->pos + addr));
 	i = -1;
 	while (++i < REG_NUMBER)
 		new->reg[i] = cursor->reg[i];
@@ -55,7 +55,7 @@ void	init_cursor(t_cor *cor)
 	pos = 0;
 	while (++id < cor->count_heroes)
 	{
-		tmp = create_cursor(cor, id, pos);
+		tmp = create_cursor(id, pos);
 		tmp->next = cor->cursor;
 		cor->cursor = tmp;
 		cor->cursors++;

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 15:47:14 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 19:52:27 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ typedef struct		s_operation
 	int				cycles;
 	void			(*func)(t_cor *, t_cursor *);
 
-}				t_operation;
+}					t_operation;
 
-static t_operation	g_op[16] = {
+static				t_operation	g_op[16] = {
 	{
 		.name = "live",
 		.code = 0x01,
@@ -238,13 +238,12 @@ static uint8_t			g_arg_code[3] = {
 	T_IND
 };
 
-
 void				read_flags(t_cor *cor, int argc, char **argv);
 void				error_case(char *str);
 int					mod_atoi(char *str);
 t_files				*create_list(int i, char *data);
 int					is_filename(char *str);
-void				add_file(t_cor *cor, int *i, int argc, char **argv);
+void				add_file(t_cor *cor, int *i, char **argv);
 void				set_players(t_cor *cor);
 void				validate_heroes(t_cor *cor);
 void				init_game(t_cor *cor);
@@ -259,13 +258,11 @@ int					validate_args(t_cursor *cursor, t_operation *operation);
 int					check_args(t_cursor *cursor, t_cor *cor, t_operation *o);
 int					count_step(uint8_t type, t_operation *operation);
 int8_t				count_size(t_cor *cor, int pos, int step);
-void				next_op(t_cor *cor, t_cursor *cursor);
+void				next_op(t_cursor *cursor);
 void				check_who_die(t_cor *cor);
-int 				take_op(t_cor *cor, t_cursor *cursor, uint8_t i, int mod);
+int					take_op(t_cor *cor, t_cursor *cursor, uint8_t i, int mod);
 void				int_to_byte(t_cor *cor, int32_t a, int32_t m, int32_t t);
 int32_t				byte_to_int(t_cor *cor, int32_t addr, int32_t size);
-t_cursor			*copy_cursor(t_cor *cor, t_cursor *cursor, int32_t addr);
-
-void				print_data(t_cor *cor);
+t_cursor			*copy_cursor(t_cursor *cursor, int32_t addr);
 
 #endif
