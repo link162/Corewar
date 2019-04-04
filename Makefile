@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/04/04 19:47:50 by ybuhai           ###   ########.fr        #
+#    Updated: 2019/04/04 20:12:28 by ybuhai           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ LIB_N		=	libftprintf.a
 SRC_D		=	src/
 SRC			=	$(SRC_D)main.c \
 				$(SRC_D)read_flags.c \
-				$(SRC_D)error_case.c \
 				$(SRC_D)function_for_help.c \
 				$(SRC_D)set_players.c \
 				$(SRC_D)init_game.c \

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:38:17 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 19:52:52 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 20:10:52 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_cursor(t_cursor *cursor, t_cor *cor)
 		else
 			cursor->step = 1;
 	}
-		next_op(cursor);
+	next_op(cursor);
 }
 
 void	run_cycle(t_cor *cor)
@@ -78,7 +78,8 @@ void	full_game(t_cor *cor)
 	while (cor->cursors)
 	{
 		if (cor->log == 2)
-			ft_printf("It is now cycle %llu, after check %i\n", cor->cycles + 1, cor->cycles_after_check + 1);
+			ft_printf("It is now cycle %llu, after check %i\n",
+					cor->cycles + 1, cor->cycles_after_check + 1);
 		if (cor->dump_cycle == cor->cycles)
 		{
 			print_arena(cor);

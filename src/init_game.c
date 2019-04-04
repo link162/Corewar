@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 12:28:58 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 19:50:49 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 20:19:36 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_cursor	*copy_cursor(t_cursor *cursor, int32_t addr)
 	return (new);
 }
 
-void	init_cursor(t_cor *cor)
+void		init_cursor(t_cor *cor)
 {
 	int			id;
 	uint32_t	pos;

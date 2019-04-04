@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:12:26 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 19:51:23 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 20:21:49 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void				op_sti(t_cor *cor, t_cursor *cursor)
 	cursor->step += REG_LEN;
 	arg2 = take_op(cor, cursor, 2, 1);
 	arg3 = take_op(cor, cursor, 3, 1);
-	int_to_byte(cor, (cursor->pos + ((arg2 + arg3) % IDX_MOD)), value, DIR_SIZE);
+	int_to_byte(cor, (cursor->pos + ((arg2 + arg3) %
+					IDX_MOD)), value, DIR_SIZE);
 }
 
 void				op_fork(t_cor *cor, t_cursor *cursor)
@@ -79,18 +80,4 @@ void				op_lfork(t_cor *cor, t_cursor *cursor)
 	new->next = cor->cursor;
 	cor->cursor = new;
 	cor->cursors++;
-}
-
-void				op_aff(t_cor *cor, t_cursor *cursor)
-{
-	int32_t	a1;
-	int32_t	a2;
-	int32_t	reg;
-
-	cursor->step += OP_LEN + ARG_LEN;
-	a1 = take_op(cor, cursor, 1, 1);
-	a2 = take_op(cor, cursor, 2, 1);
-	reg = cor->stage[find_adress(cursor->pos + cursor->step)];
-	cursor->reg[reg - 1] = byte_to_int(cor, cursor->pos + a1 + a2, DIR_SIZE);
-	cursor->step += REG_LEN;
 }

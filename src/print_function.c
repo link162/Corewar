@@ -6,13 +6,13 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 21:07:31 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/02 19:14:37 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/04 20:24:04 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		print_players(t_cor *cor)
+void	print_players(t_cor *cor)
 {
 	int id;
 
@@ -34,7 +34,8 @@ void	print_last_alive(t_cor *cor)
 
 void	print_live(t_cor *cor, int id)
 {
-	ft_printf("A process shows that player %i %s is alive\n", id + 1, cor->heroes[id].name);
+	ft_printf("A process shows that player %i %s is alive\n",
+			id + 1, cor->heroes[id].name);
 }
 
 void	print_arena(t_cor *cor)
@@ -56,4 +57,3 @@ void	print_arena(t_cor *cor)
 		i += 32;
 	}
 }
-
