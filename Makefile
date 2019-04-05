@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/04/05 18:41:56 by akorobov         ###   ########.fr        #
+#    Updated: 2019/04/05 19:27:53 by akorobov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,61 +15,74 @@ NAME		=	corewar
 LIB			=	libftprintf/
 LIB_N		=	libftprintf.a
 
-SRC_D		=	src/
-SRC			=	$(SRC_D)main.c \
-				$(SRC_D)read_flags.c \
-				$(SRC_D)function_for_help.c \
-				$(SRC_D)set_players.c \
-				$(SRC_D)init_game.c \
-				$(SRC_D)validate_heroes.c \
-				$(SRC_D)print_function.c \
-				$(SRC_D)full_game.c \
-				$(SRC_D)read_argtype.c \
-				$(SRC_D)check_who_die.c \
-				$(SRC_D)vs_init.c \
-				$(SRC_D)vs_dinit_win.c \
-				$(SRC_D)vs_control_arena.c \
-				$(SRC_D)vs_key.c \
-				$(SRC_D)vs_sound_die.c \
-				$(SRC_D)vs_winner.c \
-				$(SRC_D)vs_up_statusbar.c \
-				$(SRC_D)vs_init_status_bar.c \
-				$(SRC_D)ftoa.c \
-				$(SRC_D)operation0.c \
-				$(SRC_D)operation5.c \
-				$(SRC_D)operation10.c \
-				$(SRC_D)operation16.c \
+SRC_DIR		= ./src/
+OBJ_DIR		= ./obj/
+INC_DIR 	= ./includes/
 
-OBJ_D		=	obj/
-OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
+SRC			=	main.c \
+				read_flags.c \
+				function_for_help.c \
+				set_players.c \
+				init_game.c \
+				validate_heroes.c \
+				print_function.c \
+				full_game.c \
+				read_argtype.c \
+				check_who_die.c \
+				vs_init.c \
+				vs_dinit_win.c \
+				vs_control_arena.c \
+				vs_key.c \
+				vs_sound_die.c \
+				vs_winner.c \
+				vs_up_statusbar.c \
+				vs_init_status_bar.c \
+				ftoa.c \
+				operation0.c \
+				operation5.c \
+				operation10.c \
+				operation16.c 
 
-INCLUDE		=	-I includes/
-CFLAGS		=	-Wall -Wextra -Werror -Ofast
-LIBNC		=	-lncurses
-C			=	gcc
+
+LIBFT 		= $(LIBFT_DIR)libftprintf.a
+LIBFT_DIR 	= ./libftprintf/
+LIBFT_INC	= $(LIBFT_DIR)
+
+HEADER_FLAGS = -I $(INC_DIR) -I $(LIBFT_INC)
+
+OBJ			=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+
+CC_FLAGS	= -O3 -Wall -Wextra -Werror
+CC 			= gcc
+
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@make -C $(LIB)
-	@$(C) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)$(LIB_N) $(INCLUDE) $(LIBNC)
+$(NAME): $(LIBFT) $(OBJ)
+	@$(CC) $(OBJ) $(LIBFT) -o $(NAME) -lncurses
+	@printf "\033[1;32mcorewar created \033[0m\n"
 
-$(OBJ): $(OBJ_D)
+$(OBJ): | $(OBJ_DIR)
 
-$(OBJ_D):
-	@mkdir -p $(OBJ_D)$(SRC_D)
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)
 
-$(OBJ_D)%.o: %.c
-	@$(C) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEAD)
+	@$(CC) -c  $< -o $@ $(CC_FLAGS) $(HEADER_FLAGS) $(DEBUG) 
+
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
 
 clean:
-	@make clean -C $(LIB)
 	@rm -f $(OBJ)
+	@make clean -C $(LIBFT_DIR)
+	@printf "\033[1;33mobject deleted \033[0m\n"
 
 fclean: clean
-	@make fclean -C $(LIB)
 	@rm -f $(NAME)
-	@rm -rf $(OBJ_D)
+	@rm -rf $(OBJ_DIR)
+	@make fclean -C $(LIBFT_DIR)
+	@printf "\033[1;31mcorewar deleted \033[0m\n"
 
 re: fclean all
 
