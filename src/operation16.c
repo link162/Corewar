@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 14:51:43 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 13:35:34 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/05 14:34:32 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ void		op_aff(t_cor *cor, t_cursor *cursor)
 	cursor->step += REG_LEN;
 	if (cor->aff)
 		ft_printf("%c\n", (char)value);
+}
+
+void		set_field(t_cor *cor, int32_t addr, uint8_t i, int32_t size)
+{
+	int j;
+
+	j = 0;
+	while (size)
+	{
+		cor->field[find_adress(addr + size - 1)] = i;
+		j+= 8;
+		size--;
+	}
 }
 
 void		int_to_byte(t_cor *cor, int32_t addr, int32_t value, int32_t size)
