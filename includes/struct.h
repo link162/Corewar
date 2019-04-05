@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 14:24:17 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 09:55:30 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 14:03:49 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct		s_files
 typedef struct		s_cor
 {
 	uint8_t			stage[MEM_SIZE];
+	uint8_t			field[MEM_SIZE];
 	t_hero			heroes[MAX_PLAYERS];
 	t_files			*list;
 	t_cursor		*cursor;
@@ -58,6 +59,7 @@ typedef struct		s_cor
 	ssize_t			cycles_after_check;
 	ssize_t			check_in;
 	ssize_t			live_in;
+	int				aff;
 	int				log;
 	int				cursors;
 	int				count_heroes;

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 12:28:58 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 07:30:42 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 14:04:13 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,18 @@ void		init_game(t_cor *cor)
 	pc = 0;
 	while (id < cor->count_heroes)
 	{
-		ft_memcpy(&(cor->stage[pc]),
-			cor->heroes[id].code,
+		ft_memset(&(cor->field[pc]), id + 1, (size_t)(cor->heroes[id].size));
+		ft_memcpy(&(cor->stage[pc]), cor->heroes[id].code,
 			(size_t)(cor->heroes[id].size));
 		pc += MEM_SIZE / cor->count_heroes;
 		id++;
 	}
 	if (cor->visual == 1)
+	{
+		cor->aff = 0;
 		cor->dump_cycle = -1;
+		cor->log = 0;
+	}
 	cor->last_alive = cor->count_heroes - 1;
 	init_cursor(cor);
 }
