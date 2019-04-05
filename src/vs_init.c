@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 18:33:35 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 14:35:27 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:21:03 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ static void	set_colors(void)
 	init_pair(2, 39, 0);
 	init_pair(3, 226, 0);
 	init_pair(4, 160, 0);
-	init_pair(11, 255, 40);
-	init_pair(12, 255, 39);
-	init_pair(13, 255, 226);
-	init_pair(14, 255, 196);
+	init_pair(5, 255, 60);
+	init_pair(6, 255, 34);
+	init_pair(7, 255, 39);
+	init_pair(8, 255, 226);
+	init_pair(9, 255, 160);
 }
 
 void		init_win(t_cor *cor)
