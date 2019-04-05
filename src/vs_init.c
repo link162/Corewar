@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 18:33:35 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 10:45:44 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 13:47:19 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	set_colors(void)
 	start_color();
 	assume_default_colors(255, 0);
 	init_pair(15, 128, 0);
+	init_pair(17, 255, 0);
 	init_pair(16, 60, 0);
 	init_pair(1, 34, 0);
 	init_pair(2, 39, 0);

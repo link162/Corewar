@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:38:17 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 10:44:24 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 13:06:13 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,4 @@ void	full_game(t_cor *cor)
 			check_who_die(cor);
 		update_arena(cor);
 	}
-	if (cor->visual)
-		dinit_win();
 }

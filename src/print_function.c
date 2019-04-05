@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 21:07:31 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 20:24:04 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/05 13:51:43 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	print_last_alive(t_cor *cor)
 {
 	ft_printf("Player %d \"%s\" won!\n", cor->last_alive + 1,
 			cor->heroes[cor->last_alive].name);
+	if (cor->visual)
+		winner(cor->heroes[cor->last_alive]);
 }
 
 void	print_live(t_cor *cor, int id)

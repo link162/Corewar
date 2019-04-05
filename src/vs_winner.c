@@ -6,31 +6,58 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 09:49:34 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 10:08:42 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 13:56:50 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		winner(char *name_winner)
+void		winner_ban()
+{
+	wattron(stdscr, COLOR_PAIR(17));
+	mvwprintw(stdscr, 28, 100, "%S",
+			L"██╗    ██╗██╗███╗   ██╗███╗   ██╗███████╗██████╗ ");
+	mvwprintw(stdscr, 29, 100, "%S",
+			L"██║    ██║██║████╗  ██║████╗  ██║██╔════╝██╔══██╗");
+	mvwprintw(stdscr, 30, 100, "%S",
+			L"██║ █╗ ██║██║██╔██╗ ██║██╔██╗ ██║█████╗  ██████╔╝");
+	mvwprintw(stdscr, 31, 100, "%S",
+			L"██║███╗██║██║██║╚██╗██║██║╚██╗██║██╔══╝  ██╔══██╗");
+	mvwprintw(stdscr, 32, 100, "%S",
+			L"╚███╔███╔╝██║██║ ╚████║██║ ╚████║███████╗██║  ██║");
+	mvwprintw(stdscr, 33, 100, "%S",
+			L" ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝");
+	wattroff(stdscr, COLOR_PAIR(17));
+}
+
+void			get_color(int id)
+{
+	const char	*color[4] = {
+		"\033[32m", "\033[34m", "\033[33m", "\033[31m"};
+
+	printf("%s", color[id]);
+}
+
+void		winner(t_hero winner)
 {
 	int		y;
 	int		x;
-	int		col_sym;
+	int		col;
+	int		len;
 	
-	update(g_win_status_bar);
-	update(g_win_arena);
-	if (258 % ft_strlen(name_winner))
-		col = 258 /  ft_strlen(name_winner) + 1;
-	else
-		col = 258 /  ft_strlen(name_winner);	
-	y = -1;
-	while (++y < 67)
+	update(stdscr);
+	y = getmaxy(stdscr);
+	x = getmaxx(stdscr);
+	get_color(winner.id);
+	len = ft_strlen(winner.name);
+	while (y--)
 	{
-		x = -1;
-		while (++x < col)
-			printf(name_winner);
+		col = x / 2;
+		while (col--)
+			printf("%c ", ft_toupper(winner.name[col % len]));
 	}
+	winner_ban();
 	while (getch() != KEY_ESC)
 		;
+	dinit_win();
 }
