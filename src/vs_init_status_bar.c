@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:39:50 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 17:17:30 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 19:04:47 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		print_players_info(t_cor *cor)
 	}
 }
 
-void		print_header()
+void		print_header(void)
 {
 	mvwprintw(g_win_status_bar, 1, 1, "%S",
 			L" ██████╗ ██████╗ ██████╗ ███████╗██╗    ██╗ █████╗ ██████╗ ");

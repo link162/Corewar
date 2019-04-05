@@ -6,13 +6,13 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:21:42 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 09:55:02 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 19:00:01 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visual.h"
 
-void		print_control_key()
+void			print_control_key(void)
 {
 	mvwprintw(g_win_status_bar, 52, 20, "OPTIONS");
 	mvwprintw(g_win_status_bar, 54, 5, "[SPACE] == pause/resume");
@@ -21,9 +21,9 @@ void		print_control_key()
 	mvwprintw(g_win_status_bar, 57, 5, "[ESC] == exit");
 }
 
-static void		pause_mode()
+static void		pause_mode(void)
 {
-	int		ch;
+	int			ch;
 
 	mvwprintw(g_win_status_bar, 64, 45, "             ");
 	mvwprintw(g_win_status_bar, 64, 52, "PAUSE");
@@ -37,15 +37,14 @@ static void		pause_mode()
 	system(g_music_set);
 }
 
-
-static void		speed_up()
+static void		speed_up(void)
 {
 	char		tmp[30];
 	char		sp[10];
-	
+
 	ft_strclr(sp);
 	mvwprintw(g_win_status_bar, 64, 45, "             ");
-	if (g_speed < 1.8)
+	if (g_speed < 1.6)
 	{
 		ft_strdel(&g_music_set);
 		g_delay /= 5;
@@ -64,14 +63,14 @@ static void		speed_up()
 	update(g_win_status_bar);
 }
 
-static void		slow_down()
+static void		slow_down(void)
 {
 	char		tmp[30];
 	char		sp[10];
-	
+
 	ft_strclr(sp);
 	mvwprintw(g_win_status_bar, 64, 45, "             ");
-	if (g_speed > 0.4)
+	if (g_speed > 0.6)
 	{
 		ft_strdel(&g_music_set);
 		g_delay *= 5;
@@ -90,9 +89,9 @@ static void		slow_down()
 	update(g_win_status_bar);
 }
 
-void			key_control()
+void			key_control(void)
 {
-	int		ch;
+	int			ch;
 
 	ch = getch();
 	if (ch)

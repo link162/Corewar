@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dinit_win.c                                        :+:      :+:    :+:   */
+/*   vs_sound_die.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/21 11:21:56 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 19:04:59 by akorobov         ###   ########.fr       */
+/*   Created: 2019/04/05 18:35:04 by akorobov          #+#    #+#             */
+/*   Updated: 2019/04/05 19:03:15 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	dinit_win(void)
+void		sound_die(void)
 {
-	endwin();
-	system("killall sh music.sh afplay");
-	exit(EXIT_SUCCESS);
+	static char	*die[3] = {"afplay",
+		"./sound/death.mp3",
+		NULL};
+
+	if (fork() == 0)
+		execv("/usr/bin/afplay", die);
 }

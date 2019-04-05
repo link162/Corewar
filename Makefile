@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/04/05 12:58:08 by akorobov         ###   ########.fr        #
+#    Updated: 2019/04/05 18:41:56 by akorobov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC			=	$(SRC_D)main.c \
 				$(SRC_D)vs_dinit_win.c \
 				$(SRC_D)vs_control_arena.c \
 				$(SRC_D)vs_key.c \
+				$(SRC_D)vs_sound_die.c \
 				$(SRC_D)vs_winner.c \
 				$(SRC_D)vs_up_statusbar.c \
 				$(SRC_D)vs_init_status_bar.c \

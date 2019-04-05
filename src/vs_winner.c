@@ -6,13 +6,13 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 09:49:34 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 14:06:04 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 19:04:32 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		winner_ban()
+void			winner_ban(void)
 {
 	wattron(stdscr, COLOR_PAIR(17));
 	mvwprintw(stdscr, 28, 100, "%S",
@@ -32,19 +32,21 @@ void		winner_ban()
 
 void			get_color(int id)
 {
-	const char	*color[4] = {
-		"\033[32m", "\033[34m", "\033[33m", "\033[31m"};
+	static char	*color[4] = {"\033[32m",
+		"\033[34m",
+		"\033[33m",
+		"\033[31m"};
 
 	printf("%s", color[id]);
 }
 
-void		winner(t_hero winner)
+void			winner(t_hero winner)
 {
-	int		y;
-	int		x;
-	int		col;
-	int		len;
-	
+	int			y;
+	int			x;
+	int			col;
+	int			len;
+
 	update(stdscr);
 	y = getmaxy(stdscr);
 	x = getmaxx(stdscr);
