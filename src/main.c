@@ -6,11 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/04/05 13:02:23 by ybuhai           ###   ########.fr       */
-=======
-/*   Updated: 2019/04/05 07:32:58 by akorobov         ###   ########.fr       */
->>>>>>> 7f066b331ebba02a42dfe5e41b80f320c42cd0f3
+/*   Updated: 2019/04/05 14:03:24 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +33,4 @@ int		main(int argc, char **argv)
 		init_win(&cor);
 	full_game(&cor);
 	print_last_alive(&cor);
-<<<<<<< HEAD
-//	init_win(&cor);
-//	update_arena(&cor);
-//	dinit_win();
-=======
->>>>>>> 7f066b331ebba02a42dfe5e41b80f320c42cd0f3
 }
