@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 16:42:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 19:49:44 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/05 13:42:17 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ void	read_flags(t_cor *cor, int argc, char **argv)
 			num_flag(cor, &i, argc, argv);
 		else if (!ft_strcmp(argv[i], "-l"))
 			log_flag(cor, &i, argc, argv);
+		else if (!ft_strcmp(argv[i], "-a"))
+		{
+			cor->aff = 1;
+			i++;
+		}
 		else if (!is_filename(argv[i]))
 			add_file(cor, &i, argv);
 		else
