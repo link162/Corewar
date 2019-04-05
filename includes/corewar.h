@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:57:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 13:35:41 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/05 14:29:51 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,5 +264,6 @@ int					take_op(t_cor *cor, t_cursor *cursor, uint8_t i, int mod);
 void				int_to_byte(t_cor *cor, int32_t a, int32_t m, int32_t t);
 int32_t				byte_to_int(t_cor *cor, int32_t addr, int32_t size);
 t_cursor			*copy_cursor(t_cursor *cursor, int32_t addr);
+void				set_field(t_cor *cor, int32_t addr, uint8_t i, int32_t size);
 
 #endif
