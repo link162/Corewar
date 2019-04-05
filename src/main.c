@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 18:11:07 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 20:12:14 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/05 07:32:58 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ int		main(int argc, char **argv)
 	validate_heroes(&cor);
 	init_game(&cor);
 	print_players(&cor);
+	if (cor.visual == 1)
+		init_win(&cor);
 	full_game(&cor);
 	print_last_alive(&cor);
-	init_win(&cor);
-	update_arena(&cor);
-	dinit_win();
 }

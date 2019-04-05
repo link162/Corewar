@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:38:17 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/04 20:10:52 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/05 10:44:24 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	run_cycle(t_cor *cor)
 
 	cor->cycles++;
 	cor->cycles_after_check++;
+	if (cor->visual)
+		update_bar(cor);
 	tmp = cor->cursor;
 	while (tmp)
 	{
@@ -75,6 +77,8 @@ void	run_cycle(t_cor *cor)
 
 void	full_game(t_cor *cor)
 {
+	if (cor->visual)
+		update_arena(cor);
 	while (cor->cursors)
 	{
 		if (cor->log == 2)
@@ -89,5 +93,8 @@ void	full_game(t_cor *cor)
 		if (cor->cycles_to_die == cor->cycles_after_check ||
 				cor->cycles_to_die <= 0)
 			check_who_die(cor);
+		update_arena(cor);
 	}
+	if (cor->visual)
+		dinit_win();
 }
