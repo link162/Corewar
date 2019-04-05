@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:39:50 by akorobov          #+#    #+#             */
-/*   Updated: 2019/03/29 15:40:58 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 08:03:59 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void		print_players_info(t_cor *cor)
 
 void		print_header()
 {
-	wattron(g_win_status_bar, COLOR_PAIR(16));
 	mvwprintw(g_win_status_bar, 1, 1, "%S",
 			L" ██████╗ ██████╗ ██████╗ ███████╗██╗    ██╗ █████╗ ██████╗ ");
 	mvwprintw(g_win_status_bar, 2, 1, "%S",
@@ -55,7 +54,6 @@ void		print_header()
 			L"╚██████╗╚██████╔╝██║  ██║███████╗╚███╔███╔╝██║  ██║██║  ██║");
 	mvwprintw(g_win_status_bar, 6, 1, "%S",
 			L" ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝");
-	wattroff(g_win_status_bar, COLOR_PAIR(16));
 	print_border(7);
 }
 

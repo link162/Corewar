@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:45:44 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/04 19:42:32 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/05 07:26:47 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	print_header();
 void	init_status_bar(t_cor *cor);
 void	print_border(int y);
 void	ftoa(float n, char *ret, int afterpoint);
+void	update_bar(t_cor *cor);
 
 char	*g_music_set;
 int		g_delay;
