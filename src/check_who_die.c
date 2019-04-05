@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 18:54:33 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 07:28:36 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 17:28:22 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	check_cursors(t_cor *cor)
 	{
 		if (is_die(cor, tmp))
 		{
-			system("afplay ./sound/death2.mp3 &");
+//			if (cor->visual)
+				system("afplay ./sound/death.mp3 &");
 			new = tmp->next;
 			free(tmp);
 			if (prev)

@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:39:50 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 08:03:59 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 17:17:30 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ void		init_status_bar(t_cor *cor)
 {
 	print_header();
 	mvwprintw(g_win_status_bar, 11, 5, "CYCLE :");
-	mvwprintw(g_win_status_bar, 12, 5, "CYCLE TO DIE :");
-	mvwprintw(g_win_status_bar, 13, 5, "CYCLE DELTA :");
-	mvwprintw(g_win_status_bar, 14, 5, "PROCESSES :");
+	mvwprintw(g_win_status_bar, 12, 5, "CYCLE BEFORE CHECK :");
+	mvwprintw(g_win_status_bar, 13, 5, "CYCLE TO DIE :");
+	mvwprintw(g_win_status_bar, 14, 5, "CYCLE DELTA :");
+	mvwprintw(g_win_status_bar, 15, 5, "PROCESSES :");
 	print_border(16);
 	print_players_info(cor);
 	print_border(48);

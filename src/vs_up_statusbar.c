@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 07:20:43 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 13:16:51 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 17:17:45 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void		update_bar(t_cor *cor)
 		wattroff(g_win_status_bar, COLOR_PAIR(i + 1));
 	}
 	mvwprintw(g_win_status_bar, 11, 13, "%-10d", cor->cycles);
-	mvwprintw(g_win_status_bar, 12, 20, "%-10d", cor->cycles_to_die);
-	mvwprintw(g_win_status_bar, 13, 19, "%-10d", CYCLE_DELTA);
-	mvwprintw(g_win_status_bar, 14, 17, "%-10d", cor->live_in);
+	mvwprintw(g_win_status_bar, 12, 26, "%-10d", cor->cycles_to_die
+			- cor->cycles_after_check);
+	mvwprintw(g_win_status_bar, 13, 20, "%-10d", cor->cycles_to_die);
+	mvwprintw(g_win_status_bar, 14, 19, "%-10d", CYCLE_DELTA);
+	mvwprintw(g_win_status_bar, 15, 17, "%-10d", cor->live_in);
 	update(g_win_status_bar);
 }

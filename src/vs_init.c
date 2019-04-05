@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 18:33:35 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 16:21:03 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/05 17:17:14 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void		print_border(int y)
 {
 	wattron(g_win_status_bar, COLOR_PAIR(15));
 	mvwprintw(g_win_status_bar, y, 1,
-			"__________________________________________________________");
+			"___________________________________________________________");
 	mvwprintw(g_win_status_bar, ++y, 1,
-			"__________________________________________________________");
+			"___________________________________________________________");
 	wattroff(g_win_status_bar, COLOR_PAIR(15));
 }
 
@@ -50,6 +50,7 @@ static void	set_colors(void)
 
 void		init_win(t_cor *cor)
 {
+	system("echo \'\e[8;67;258t\' && stty columns 258 rows 67");
 	g_music_set = ft_strdup("./music.sh 1 &");
 	system(g_music_set);
 	setlocale(LC_ALL, "");
