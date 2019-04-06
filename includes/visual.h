@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:45:44 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 18:44:29 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/06 12:26:42 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ WINDOW *g_win_status_bar;
 void	init_win(t_cor *cor);
 void	dinit_win();
 void	init_status_bar(t_cor *cor);
-void	update_arena(t_cor *cor); 
+void	update_arena(t_cor *cor);
 void	update(WINDOW *win);
 void	key_control();
 void	print_control_key();

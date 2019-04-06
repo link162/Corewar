@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 18:54:33 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/06 10:23:24 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/06 12:16:51 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ int		is_die(t_cor *cor, t_cursor *cursor)
 			|| cor->cycles - cursor->last_live >= cor->cycles_to_die);
 }
 
-void	check_cursors(t_cor *cor)
+void	check_cursors(t_cor *cor, t_cursor *prev)
 {
-	t_cursor *prev;
 	t_cursor *tmp;
 	t_cursor *new;
 
-	prev = NULL;
 	tmp = cor->cursor;
 	while (tmp)
 	{
@@ -62,7 +60,7 @@ void	check_who_die(t_cor *cor)
 
 	i = -1;
 	cor->check_in++;
-	check_cursors(cor);
+	check_cursors(cor, NULL);
 	if (cor->check_in == MAX_CHECKS || cor->live_in >= NBR_LIVE)
 	{
 		cor->cycles_to_die -= CYCLE_DELTA;

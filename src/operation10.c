@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:12:26 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 14:34:16 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/06 12:24:19 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void				op_sti(t_cor *cor, t_cursor *cursor)
 	arg2 = take_op(cor, cursor, 2, 1);
 	arg3 = take_op(cor, cursor, 3, 1);
 	int_to_byte(cor, cursor->pos + (arg2 + arg3) % IDX_MOD, value, DIR_SIZE);
-	set_field(cor, cursor->pos + (arg2 + arg3) % IDX_MOD, cor->field[cursor->pos], DIR_SIZE);
+	set_field(cor, cursor->pos + (arg2 + arg3) % IDX_MOD,
+			cor->field[cursor->pos], DIR_SIZE);
 }
 
 void				op_fork(t_cor *cor, t_cursor *cursor)

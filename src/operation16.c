@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 14:51:43 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 14:34:32 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/06 12:24:41 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		set_field(t_cor *cor, int32_t addr, uint8_t i, int32_t size)
 	while (size)
 	{
 		cor->field[find_adress(addr + size - 1)] = i;
-		j+= 8;
+		j += 8;
 		size--;
 	}
 }
