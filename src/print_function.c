@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 21:07:31 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/06 13:21:15 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/06 13:56:46 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,14 @@ void	print_last_alive(t_cor *cor)
 void	print_help(void)
 {
 	int			i;
-	const char	*help[7] = {
-		"Usage: ./corewar [-d N | -v | -l N | ",
+	const char	*help[7] = {"Usage: ./corewar [-d N | -v | -l N | ",
 		"[-a ] | -n N ] <champ.cor> <...>\n\n",
 		"\t-a        : Prints output from \"aff\" (Default is to hide it)\n",
 		"\t-d N      : Dumps memory after N cycles then exits\n",
 		"\t-v        : Ncurses output mode\n",
 		"\t-l N      : Verbosity levels\n"
 		"\t\t\t- 1 : Show lives\n\t\t\t- 2 : Show cycles\n",
-		"\t-n N      : Set player's id\n"
-	};
+		"\t-n N      : Set player's id\n"};
 
 	i = -1;
 	while (++i < 7)
