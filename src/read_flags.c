@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 16:42:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 19:39:34 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/06 10:44:56 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	visual_flag(t_cor *cor, int *i)
 {
+	if (cor->visual)
+		error_case(USAGE);
 	cor->visual = 1;
 	(*i)++;
 }
@@ -59,7 +61,7 @@ void	log_flag(t_cor *cor, int *i, int argc, char **argv)
 {
 	int z;
 
-	if (*i + 1 >= argc)
+	if (*i + 1 >= argc || cor->log)
 		error_case(USAGE);
 	(*i)++;
 	z = mod_atoi(argv[*i]);
@@ -85,7 +87,7 @@ void	read_flags(t_cor *cor, int argc, char **argv)
 			num_flag(cor, &i, argc, argv);
 		else if (!ft_strcmp(argv[i], "-l"))
 			log_flag(cor, &i, argc, argv);
-		else if (!ft_strcmp(argv[i], "-a"))
+		else if (!ft_strcmp(argv[i], "-a") && !cor->aff)
 		{
 			cor->aff = 1;
 			i++;
