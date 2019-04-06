@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:09:54 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 14:32:14 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/06 10:35:15 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void				op_live(t_cor *cor, t_cursor *cursor)
 	int		id;
 	t_hero	*hero;
 
-	cursor->step++;
+	cursor->step += OP_LEN;
 	id = take_op(cor, cursor, 1, 0);
 	cor->live_in++;
 	cursor->last_live = cor->cycles;
@@ -40,7 +40,7 @@ void				op_ld(t_cor *cor, t_cursor *cursor)
 	int32_t	value;
 	int32_t	reg;
 
-	cursor->step += (OP_LEN + ARG_LEN);
+	cursor->step += OP_LEN + ARG_LEN;
 	value = take_op(cor, cursor, 1, 1);
 	cursor->carry = !value;
 	reg = cor->stage[find_adress(cursor->pos + cursor->step)];
@@ -80,7 +80,7 @@ void				op_add(t_cor *cor, t_cursor *cursor)
 	int32_t	reg3;
 	int32_t	i;
 
-	cursor->step += (OP_LEN + ARG_LEN);
+	cursor->step += OP_LEN + ARG_LEN;
 	reg1 = cor->stage[find_adress(cursor->pos + cursor->step)];
 	cursor->step += REG_LEN;
 	reg2 = cor->stage[find_adress(cursor->pos + cursor->step)];
@@ -88,7 +88,7 @@ void				op_add(t_cor *cor, t_cursor *cursor)
 	i = cursor->reg[reg1 - 1] + cursor->reg[reg2 - 1];
 	cursor->carry = !i;
 	reg3 = cor->stage[find_adress(cursor->pos + cursor->step)];
-	cursor->reg[reg3] = i;
+	cursor->reg[reg3 - 1] = i;
 	cursor->step += REG_LEN;
 }
 
@@ -107,6 +107,6 @@ void				op_sub(t_cor *cor, t_cursor *cursor)
 	i = cursor->reg[reg1 - 1] - cursor->reg[reg2 - 1];
 	cursor->carry = !i;
 	reg3 = cor->stage[find_adress(cursor->pos + cursor->step)];
-	cursor->reg[reg3] = i;
+	cursor->reg[reg3 - 1] = i;
 	cursor->step += REG_LEN;
 }

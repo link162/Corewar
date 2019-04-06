@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 16:42:51 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/05 13:42:17 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/05 19:39:34 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	log_flag(t_cor *cor, int *i, int argc, char **argv)
 		error_case(USAGE);
 	(*i)++;
 	z = mod_atoi(argv[*i]);
-	if (z == 1 || z == 2 || z == 4 || z == 8)
+	if (z == 1 || z == 2)
 		cor->log = z;
 	else
 		error_case(USAGE);
