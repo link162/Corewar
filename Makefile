@@ -6,11 +6,12 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/04/06 12:01:22 by akorobov         ###   ########.fr        #
+#    Updated: 2019/04/06 12:56:12 by akorobov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	corewar
+ASM			=	asm_name
 
 LIB			=	libftprintf/
 LIB_N		=	libftprintf.a
@@ -57,9 +58,12 @@ CC_FLAGS	= -O3 -Wall -Wextra -Werror
 CC 			= gcc
 
 
-all: $(NAME)
+all: $(ASM) $(NAME) 
 
-$(NAME): $(LIBFT) $(OBJ) $(ASM)
+$(ASM):
+	@make -C $(ASM_DIR)
+	
+$(NAME): $(LIBFT) $(OBJ) 
 	@$(CC) $(OBJ) $(LIBFT) -o $(NAME) -lncurses
 	@printf "\033[1;32mcorewar created \033[0m\n"
 
@@ -74,8 +78,6 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEAD)
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
-$(ASM):
-	@make -C $(ASM_DIR)
 
 clean:
 	@rm -f $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:09:54 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/06 12:24:00 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/06 13:09:53 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void				op_st(t_cor *cor, t_cursor *cursor)
 		int_to_byte(cor, cursor->pos + (addr % IDX_MOD), i, DIR_SIZE);
 		cursor->step += IND_SIZE;
 		set_field(cor, cursor->pos + addr % IDX_MOD,
-				cor->stage[cursor->pos], DIR_SIZE);
+				cor->field[cursor->pos], DIR_SIZE);
 	}
 }
 
