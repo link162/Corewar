@@ -6,7 +6,7 @@
 /*   By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 21:07:31 by ybuhai            #+#    #+#             */
-/*   Updated: 2019/04/06 10:38:29 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/06 11:35:47 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	print_last_alive(t_cor *cor)
 			cor->heroes[cor->last_alive].name);
 	if (cor->visual)
 		winner(cor->heroes[cor->last_alive]);
+}
+
+void	print_help(void)
+{
+	exit(1);
 }
 
 void	print_live(t_cor *cor, int id)
