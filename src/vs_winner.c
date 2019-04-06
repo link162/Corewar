@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 09:49:34 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 19:04:32 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/06 14:18:10 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 void			winner_ban(void)
 {
+	int			y;
+	int			x;
+
+	y = getmaxy(stdscr) / 2 - 6;
+	x = getmaxx(stdscr) / 2 - 25;
 	wattron(stdscr, COLOR_PAIR(17));
-	mvwprintw(stdscr, 28, 100, "%S",
+	mvwprintw(stdscr, y++, x, "%S",
 			L"██╗    ██╗██╗███╗   ██╗███╗   ██╗███████╗██████╗ ");
-	mvwprintw(stdscr, 29, 100, "%S",
+	mvwprintw(stdscr, y++, x, "%S",
 			L"██║    ██║██║████╗  ██║████╗  ██║██╔════╝██╔══██╗");
-	mvwprintw(stdscr, 30, 100, "%S",
+	mvwprintw(stdscr, y++, x, "%S",
 			L"██║ █╗ ██║██║██╔██╗ ██║██╔██╗ ██║█████╗  ██████╔╝");
-	mvwprintw(stdscr, 31, 100, "%S",
+	mvwprintw(stdscr, y++, x, "%S",
 			L"██║███╗██║██║██║╚██╗██║██║╚██╗██║██╔══╝  ██╔══██╗");
-	mvwprintw(stdscr, 32, 100, "%S",
+	mvwprintw(stdscr, y++, x, "%S",
 			L"╚███╔███╔╝██║██║ ╚████║██║ ╚████║███████╗██║  ██║");
-	mvwprintw(stdscr, 33, 100, "%S",
+	mvwprintw(stdscr, y++, x, "%S",
 			L" ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝");
 	wattroff(stdscr, COLOR_PAIR(17));
 }
@@ -48,8 +53,8 @@ void			winner(t_hero winner)
 	int			len;
 
 	update(stdscr);
-	y = getmaxy(stdscr);
-	x = getmaxx(stdscr);
+	y = getmaxy(stdscr) * 3;
+	x = getmaxx(stdscr) * 3;
 	get_color(winner.id);
 	len = ft_strlen(winner.name);
 	while (y--)

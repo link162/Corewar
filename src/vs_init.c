@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 18:33:35 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/05 17:50:48 by akorobov         ###   ########.fr       */
+/*   Updated: 2019/04/06 14:48:06 by akorobov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	set_colors(void)
 
 void		init_win(t_cor *cor)
 {
-	system("echo \'\e[8;67;258t\' && stty columns 258 rows 67");
+	system("echo \'\e[8;67;258t\'");
 	g_music_set = ft_strdup("./music.sh 1 &");
 	system(g_music_set);
 	setlocale(LC_ALL, "");
