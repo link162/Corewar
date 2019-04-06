@@ -6,7 +6,7 @@
 #    By: ystasiv <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/05 18:03:05 by ystasiv           #+#    #+#              #
-#    Updated: 2018/08/05 18:03:07 by ystasiv          ###   ########.fr        #
+#    Updated: 2019/04/06 12:03:32 by akorobov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,23 +60,19 @@ $(NAME): $(OBJS)
 	@cp libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "Compiling" [ $(NAME) ] $(SUCCESS)
 
 $(DIR_O)/%.o: $(DIR_S)/%.c 
 	@mkdir -p $(DIR_O)
 	@$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
-	@echo "Linking" [ $< ] $(OK)
 
 clean:
 	@rm -f $(OBJS)
 	@rm -rf $(DIR_O)
 	@rm -f libft.a
 	@make clean -C $(LIBFT)
-	@echo "Cleaning" [ $(NAME) ] "..." $(OK)
 
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C $(LIBFT)
-	@echo "Delete" [ $(NAME) ] $(OK)
 
 re: fclean all

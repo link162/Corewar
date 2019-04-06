@@ -6,7 +6,7 @@
 #    By: ybuhai <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 14:55:38 by ybuhai            #+#    #+#              #
-#    Updated: 2019/04/05 19:27:53 by akorobov         ###   ########.fr        #
+#    Updated: 2019/04/06 12:01:22 by akorobov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ LIB_N		=	libftprintf.a
 SRC_DIR		= ./src/
 OBJ_DIR		= ./obj/
 INC_DIR 	= ./includes/
+ASM_DIR		= ./asm/
 
 SRC			=	main.c \
 				read_flags.c \
@@ -58,7 +59,7 @@ CC 			= gcc
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(OBJ) $(ASM)
 	@$(CC) $(OBJ) $(LIBFT) -o $(NAME) -lncurses
 	@printf "\033[1;32mcorewar created \033[0m\n"
 
@@ -73,15 +74,20 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEAD)
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
+$(ASM):
+	@make -C $(ASM_DIR)
+
 clean:
 	@rm -f $(OBJ)
 	@make clean -C $(LIBFT_DIR)
+	@make clean -C $(ASM_DIR)
 	@printf "\033[1;33mobject deleted \033[0m\n"
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_DIR)
 	@make fclean -C $(LIBFT_DIR)
+	@make fclean -C $(ASM_DIR)
 	@printf "\033[1;31mcorewar deleted \033[0m\n"
 
 re: fclean all

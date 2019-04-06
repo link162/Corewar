@@ -25,22 +25,22 @@ OBJS = $(addprefix $(DIR_O)/,$(SOURCE:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C $(LIBFT)
-	cp $(LIBFT)/libftprintf.a .
-	gcc $(FLAGS) $(OBJS) libftprintf.a -o $(NAME)
+	@make -C $(LIBFT)
+	@cp $(LIBFT)/libftprintf.a .
+	@gcc $(FLAGS) $(OBJS) libftprintf.a -o $(NAME)
 
 $(DIR_O)/%.o: $(DIR_S)/%.c
 	@mkdir -p $(DIR_O)
-	gcc $(FLAGS) -I $(HEADER) -o $@ -c $<
+	@gcc $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
-	rm -f $(OBJS)
-	rm -rf $(DIR_O)
-	make clean -C $(LIBFT)
+	@rm -f $(OBJS)
+	@rm -rf $(DIR_O)
+	@make clean -C $(LIBFT)
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f libftprintf.a
-	make fclean -C $(LIBFT)
+	@rm -f $(NAME)
+	@rm -f libftprintf.a
+	@make fclean -C $(LIBFT)
 
 re: fclean all
