@@ -6,7 +6,7 @@
 /*   By: akorobov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 08:55:42 by akorobov          #+#    #+#             */
-/*   Updated: 2019/04/06 12:22:47 by ybuhai           ###   ########.fr       */
+/*   Updated: 2019/04/06 12:30:33 by ybuhai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ftoa(float n, char *res, int afterpoint)
 		if (fpart != 0)
 		{
 			fpart = fpart * pow(10, afterpoint);
-			intToStr((int)fpart, res + i + 1, afterpoint);
+			inttostr((int)fpart, res + i + 1, afterpoint);
 		}
 		else
 		{
